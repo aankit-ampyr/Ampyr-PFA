@@ -1,0 +1,602 @@
+====================================================================================================
+ANALYSIS OF GTC SHEETS AND INPUT SHEETS
+====================================================================================================
+
+====================================================================================================
+PART A: INPUT SHEETS FROM F1 (ASE Original)
+====================================================================================================
+
+F1 total sheets: 25
+F1 sheet names: Disclaimer, Pltfrm Costs Devex Analysis , Sensis, Checks, Dashboard, BESS DCF Multiple Analysis, ProjectSummary, HoldCo_Summary, Charts, HoldCo_Facility, HoldCo income, HoldCo CFs & Valuation, Inputs>, Project Info, Country Inputs, Financing Inputs, Time Inputs (A), Time Inputs (M), Time Inputs (Q), Workings>...
+
+  Sheet: Project Info
+    Rows analyzed: 500, Max column: 175
+    Total cells with data: 41626
+    Formula cells: 16277
+    Hardcoded value cells: 25349
+    Numeric input levers (hardcoded numbers): 17321
+    Formula complexity: simple=8368, medium=5746, complex=2163
+    Unique functions (20): INDEX(3964), MATCH(3964), IF(2810), IFERROR(1772), EOMONTH(1541), EDATE(1360), MAX(983), INPUTS(931), SUM(773), YEAR(481), DATEDIF(360), AND(243), MIN(241), DAY(240), OR(219), XLFN._TRO_TRAILING(120), MONTH(120), COUNTIFS(1), AVERAGE(1), XLFN.MINIFS(1)
+    Cross-sheet references to: Checks, Country Inputs, Dashboard, Sensis, Time Inputs (A), Time Inputs (M), Time Inputs (Q)
+    Sample formulas:
+      D3: =Checks!$D$4
+      G3: =Checks!$G$4
+      J3: =I3+1
+      K3: =J3+1
+      L3: =K3+1
+
+  Sheet: Country Inputs
+    Rows analyzed: 133, Max column: 9
+    Total cells with data: 483
+    Formula cells: 22
+    Hardcoded value cells: 461
+    Numeric input levers (hardcoded numbers): 253
+    Formula complexity: simple=22, medium=0, complex=0
+    Cross-sheet references to: Checks, Project Info
+    Sample formulas:
+      D3: =Checks!$D$4
+      G3: =Checks!$G$4
+      D88: ='Project Info'!C447
+      D89: ='Project Info'!C448
+      D90: ='Project Info'!C449
+
+  Sheet: Financing Inputs
+    Rows analyzed: 77, Max column: 16
+    Total cells with data: 583
+    Formula cells: 105
+    Hardcoded value cells: 478
+    Numeric input levers (hardcoded numbers): 333
+    Formula complexity: simple=87, medium=18, complex=0
+    Unique functions (3): EOMONTH(27), IF(18), AVERAGE(9)
+    Cross-sheet references to: Checks, Project Level Workings, Sensis
+    Sample formulas:
+      D3: =Checks!$D$4
+      G3: =Checks!$G$4
+      P14: =12*9
+      J21: =AVERAGE(H21:I21)
+      M21: =AVERAGE(K21:L21)
+
+  Sheet: Time Inputs (A)
+    Rows analyzed: 500, Max column: 325
+    Total cells with data: 20444
+    Formula cells: 16578
+    Hardcoded value cells: 3866
+    Numeric input levers (hardcoded numbers): 3084
+    Formula complexity: simple=14426, medium=1692, complex=460
+    Unique functions (12): IF(909), MATCH(672), INDEX(672), INPUTS(460), IFERROR(409), SUM(384), MIN(332), XLFN.XLOOKUP(166), XLFN.SINGLE(164), AVERAGE(128), AVERAGEIFS(26), YEAR(3)
+    Cross-sheet references to: Checks, Project Info, Project Level Workings, Sensis, Time Inputs (Q)
+    Sample formulas:
+      D4: =Checks!$D$4
+      G4: =Checks!$G$4
+      CJ5: =CI5+1
+      CK5: =CJ5+1
+      CL5: =CK5+1
+
+  Sheet: Time Inputs (M)
+    Rows analyzed: 500, Max column: 630
+    Total cells with data: 152605
+    Formula cells: 151838
+    Hardcoded value cells: 767
+    Numeric input levers (hardcoded numbers): 253
+    Formula complexity: simple=5963, medium=73920, complex=71955
+    Unique functions (10): SUMIFS(73800), IF(72075), AND(71955), MAX(71955), EOMONTH(1335), MONTH(615), YEAR(615), ROUNDUP(615), SUM(360), MIN(120)
+    Cross-sheet references to: Checks, Dashboard, HoldCo CFs & Valuation
+    Sample formulas:
+      D4: =Checks!$D$4
+      G4: =Checks!$G$4
+      Q4: =P5+1
+      R4: =Q5+1
+      S4: =R5+1
+
+  Sheet: Time Inputs (Q)
+    Rows analyzed: 254, Max column: 336
+    Total cells with data: 12054
+    Formula cells: 8147
+    Hardcoded value cells: 3907
+    Numeric input levers (hardcoded numbers): 3793
+    Formula complexity: simple=5859, medium=2288, complex=0
+    Unique functions (6): IF(2255), EOMONTH(308), YEAR(308), SUM(37), XLFN.MAXIFS(22), XLFN.MINIFS(11)
+    Cross-sheet references to: Checks, Project Info
+    Sample formulas:
+      M3: =modelStartDate
+      N3: =M4+1
+      O3: =N4+1
+      P3: =O4+1
+      Q3: =P4+1
+
+  Sheet: Sensis
+    Rows analyzed: 140, Max column: 35
+    Total cells with data: 252
+    Formula cells: 49
+    Hardcoded value cells: 203
+    Numeric input levers (hardcoded numbers): 26
+    Formula complexity: simple=49, medium=0, complex=0
+    Unique functions (1): LOOKUP(1)
+    Cross-sheet references: None
+    Sample formulas:
+      F7: =LOOKUP(F6,L11:AJ11,L12:AJ12)
+      M11: =L11+1
+      N11: =M11+1
+      O11: =N11+1
+      P11: =O11+1
+
+
+====================================================================================================
+PART B: GTC SHEETS FROM F2 (GTC Enhanced)
+====================================================================================================
+
+F2 total sheets: 45
+Sheets in F2 but NOT in F1 (GTC sheets): 21
+GTC sheet names:
+  1. Instruction tab
+  2. Summary sheet
+  3. PnL projection - aggregate
+  4. FY26A-29F PL Breakdown
+  5. FY26B PL Mapping
+  6. BS projection - aggregate
+  7. FY26A-29F BS Breakdown
+  8. FY26B BS Mapping
+  9. CF Capital Strategy
+  10. CF Capital Strategy Breakdown
+  11. Q Rep (USD)
+  12. Valuation (2)
+  13. Cash Breakeven
+  14. QRep(EUR)
+  15. FX
+  16. Net income bridge
+  17. Valuation
+  18. Log
+  19. Graphs
+  20. Tables
+  21. Asset workings
+
+  Sheet: Instruction tab
+    Rows analyzed: 68, Max column: 6
+    Total cells with data: 80
+    Formula cells: 0
+    Hardcoded value cells: 80
+    Cross-sheet references: None
+    ** Does NOT reference any ASE sheets
+
+  Sheet: Summary sheet
+    Rows analyzed: 336, Max column: 16
+    Total cells with data: 2260
+    Formula cells: 2199
+    Hardcoded value cells: 61
+    Formula complexity: simple=2199, medium=0, complex=0
+    Unique functions (2): SUM(177), VALUATION(177)
+    Cross-sheet references to: BS projection - aggregate, CF Capital Strategy, PnL projection - aggregate, REF, Valuation (2)
+    Sample formulas:
+      D6: =SUM(D7:D8)
+      E6: =SUM(E7:E8)
+      F6: =SUM(F7:F8)
+      G6: =SUM(G7:G8)
+      H6: =SUM(H7:H8)
+    ** Does NOT reference any ASE sheets
+
+  Sheet: PnL projection - aggregate
+    Rows analyzed: 225, Max column: 18
+    Total cells with data: 2248
+    Formula cells: 2018
+    Hardcoded value cells: 230
+    Formula complexity: simple=574, medium=1444, complex=0
+    Unique functions (3): ROUND(1444), SUMIF(1444), SUM(318)
+    Cross-sheet references to: FY26A-29F PL Breakdown, FY26B PL Mapping, REF
+    Sample formulas:
+      D5: =SUM(D6:D15)
+      E5: =SUM(E6:E15)
+      F5: =SUM(F6:F15)
+      G5: =SUM(G6:G15)
+      H5: =SUM(H6:H15)
+    ** Does NOT reference any ASE sheets
+
+  Sheet: FY26A-29F PL Breakdown
+    Rows analyzed: 305, Max column: 136
+    Total cells with data: 15798
+    Formula cells: 14985
+    Hardcoded value cells: 813
+    Formula complexity: simple=14985, medium=0, complex=0
+    Unique functions (3): SUM(423), INPUTS(1), SUBTOTAL(1)
+    Cross-sheet references to: HoldCo_Facility, Time Inputs (A)
+    Sample formulas:
+      J2: ='Time Inputs (A)'!$H$57
+      G3: =E4+1
+      G4: =R4
+      K8: =I8+J8
+      N8: =L8+M8
+    ** References ASE sheets: HoldCo_Facility, Time Inputs (A)
+
+  Sheet: FY26B PL Mapping
+    Rows analyzed: 73, Max column: 8
+    Total cells with data: 105
+    Formula cells: 31
+    Hardcoded value cells: 74
+    Formula complexity: simple=31, medium=0, complex=0
+    Unique functions (2): SUM(14), INPUTS(1)
+    Cross-sheet references to: Time Inputs (A)
+    Sample formulas:
+      H3: ='Time Inputs (A)'!$H$58
+      D10: =SUM(D11:D13)
+      E10: =SUM(E11:E13)
+      E11: =D11*$E$5
+      E12: =D12*$E$5
+    ** References ASE sheets: Time Inputs (A)
+
+  Sheet: BS projection - aggregate
+    Rows analyzed: 120, Max column: 20
+    Total cells with data: 1256
+    Formula cells: 1127
+    Hardcoded value cells: 129
+    Formula complexity: simple=553, medium=574, complex=0
+    Unique functions (3): ROUND(574), SUMIF(574), SUM(127)
+    Cross-sheet references to: FY26A-29F BS Breakdown, FY26B BS Mapping
+    Sample formulas:
+      C6: =ROUND(SUMIF('FY26B BS Mapping'!B:B,B6,'FY26B BS Mapping'!C:C),0)/1000
+      D6: =ROUND(SUMIF('FY26A-29F BS Breakdown'!$B:$B,B6,'FY26A-29F BS Breakdown'!G:G)/1000,0)
+      E6: =ROUND(SUMIF('FY26A-29F BS Breakdown'!$B:$B,B6,'FY26A-29F BS Breakdown'!Y:Y)/1000,0)
+      F6: =ROUND(SUMIF('FY26A-29F BS Breakdown'!$B:$B,B6,'FY26A-29F BS Breakdown'!AQ:AQ)/1000,0)
+      G6: =ROUND(SUMIF('FY26A-29F BS Breakdown'!$B:$B,C6,'FY26A-29F BS Breakdown'!AY:AY)/1000,0)
+    ** Does NOT reference any ASE sheets
+
+  Sheet: FY26A-29F BS Breakdown
+    Rows analyzed: 445, Max column: 55
+    Total cells with data: 7760
+    Formula cells: 6867
+    Hardcoded value cells: 893
+    Formula complexity: simple=6867, medium=0, complex=0
+    Unique functions (2): SUM(38), INPUTS(1)
+    Cross-sheet references to: CF Capital Strategy Breakdown, FY26A-29F PL Breakdown, Time Inputs (A)
+    Sample formulas:
+      H2: ='Time Inputs (A)'!$H$57
+      G8: =E8+F8
+      K8: =(G8*H8)+I8+J8
+      O8: =M8+N8
+      R8: =P8+Q8
+    ** References ASE sheets: Time Inputs (A)
+
+  Sheet: FY26B BS Mapping
+    Rows analyzed: 66, Max column: 8
+    Total cells with data: 104
+    Formula cells: 39
+    Hardcoded value cells: 65
+    Formula complexity: simple=39, medium=0, complex=0
+    Unique functions (2): SUM(12), INPUTS(1)
+    Cross-sheet references to: Time Inputs (A)
+    Sample formulas:
+      H2: ='Time Inputs (A)'!$H$58
+      D12: =C12*$D$5
+      D13: =C13*$D$5
+      C20: =SUM(C11:C19)
+      D20: =SUM(D11:D19)
+    ** References ASE sheets: Time Inputs (A)
+
+  Sheet: CF Capital Strategy
+    Rows analyzed: 250, Max column: 26
+    Total cells with data: 2131
+    Formula cells: 1903
+    Hardcoded value cells: 228
+    Formula complexity: simple=528, medium=1375, complex=0
+    Unique functions (3): ROUND(1375), SUMIFS(1375), SUM(321)
+    Cross-sheet references to: BS projection - aggregate, CF Capital Strategy Breakdown
+    Sample formulas:
+      D5: =ROUND(SUMIFS('CF Capital Strategy Breakdown'!D:D,'CF Capital Strategy Breakdown'!$A:$A,$A$5,'CF Capital Strategy Breakdown'!$C:$C,C5),0)
+      E5: =ROUND(SUMIFS('CF Capital Strategy Breakdown'!E:E,'CF Capital Strategy Breakdown'!$A:$A,$A$5,'CF Capital Strategy Breakdown'!$C:$C,C5),0)
+      F5: =ROUND(SUMIFS('CF Capital Strategy Breakdown'!F:F,'CF Capital Strategy Breakdown'!$A:$A,$A$5,'CF Capital Strategy Breakdown'!$C:$C,C5),0)
+      G5: =ROUND(SUMIFS('CF Capital Strategy Breakdown'!G:G,'CF Capital Strategy Breakdown'!$A:$A,$A$5,'CF Capital Strategy Breakdown'!$C:$C,C5),0)
+      H5: =ROUND(SUMIFS('CF Capital Strategy Breakdown'!H:H,'CF Capital Strategy Breakdown'!$A:$A,$A$5,'CF Capital Strategy Breakdown'!$C:$C,C5),0)
+    ** Does NOT reference any ASE sheets
+
+  Sheet: CF Capital Strategy Breakdown
+    Rows analyzed: 255, Max column: 19
+    Total cells with data: 2104
+    Formula cells: 1459
+    Hardcoded value cells: 645
+    Formula complexity: simple=1431, medium=28, complex=0
+    Unique functions (2): SUM(527), INPUTS(2)
+    Cross-sheet references to: FY26A-29F BS Breakdown, FY26A-29F PL Breakdown, HoldCo_Facility, PnL projection - aggregate, Time Inputs (A)
+    Sample formulas:
+      H2: ='Time Inputs (A)'!$H$57
+      H3: ='Time Inputs (A)'!$H$58
+      E10: =34761.6801837843*H2
+      F10: =E127
+      G10: =F127
+    ** References ASE sheets: HoldCo_Facility, Time Inputs (A)
+
+  Sheet: Q Rep (USD)
+    Rows analyzed: 477, Max column: 88
+    Total cells with data: 11837
+    Formula cells: 4032
+    Hardcoded value cells: 7805
+    Formula complexity: simple=717, medium=3315, complex=0
+    Unique functions (4): QREP(3334), REP(3315), SUM(576), MAX(16)
+    Cross-sheet references to: QRep(EUR)
+    Sample formulas:
+      BA40: ='QRep(EUR)'!BA40*'Q Rep (USD)'!$BF$31
+      BB40: ='QRep(EUR)'!BB40*'Q Rep (USD)'!$BF$31
+      BC40: ='QRep(EUR)'!BC40*'Q Rep (USD)'!$BF$31
+      BD40: ='QRep(EUR)'!BD40*'Q Rep (USD)'!$BF$31
+      BE40: ='QRep(EUR)'!BE40*'Q Rep (USD)'!$BF$31
+    ** Does NOT reference any ASE sheets
+
+  Sheet: Valuation (2)
+    Rows analyzed: 109, Max column: 23
+    Total cells with data: 741
+    Formula cells: 394
+    Hardcoded value cells: 347
+    Formula complexity: simple=381, medium=13, complex=0
+    Unique functions (4): SUM(68), XLFN.XLOOKUP(9), INPUTS(3), MAX(2)
+    Cross-sheet references to: HoldCo_Facility, Time Inputs (A), Valuation
+    Sample formulas:
+      M2: ='Time Inputs (A)'!$H$57
+      N2: ='Time Inputs (A)'!$H$57
+      M3: ='Time Inputs (A)'!$H$58
+      I6: =C6*$J$2
+      J6: =D6*$J$2
+    ** References ASE sheets: HoldCo_Facility, Time Inputs (A)
+
+  Sheet: Cash Breakeven
+    Rows analyzed: 40, Max column: 13
+    Total cells with data: 211
+    Formula cells: 146
+    Hardcoded value cells: 65
+    Formula complexity: simple=145, medium=1, complex=0
+    Unique functions (2): SUM(67), INPUTS(1)
+    Cross-sheet references to: CF Capital Strategy Breakdown, FY26A-29F PL Breakdown, HoldCo CFs & Valuation, HoldCo_Summary, Time Inputs (A)
+    Sample formulas:
+      M2: ='Time Inputs (A)'!$H$57
+      C5: =HoldCo_Summary!M13
+      D5: =HoldCo_Summary!N13
+      E5: =HoldCo_Summary!O13
+      F5: =HoldCo_Summary!P13
+    ** References ASE sheets: HoldCo CFs & Valuation, HoldCo_Summary, Time Inputs (A)
+
+  Sheet: QRep(EUR)
+    Rows analyzed: 477, Max column: 89
+    Total cells with data: 8845
+    Formula cells: 1867
+    Hardcoded value cells: 6978
+    Formula complexity: simple=1845, medium=22, complex=0
+    Unique functions (4): SUM(665), MAX(12), MIN(9), XLFN.XLOOKUP(7)
+    Cross-sheet references to: Valuation
+    Sample formulas:
+      AZ40: =AZ154
+      BA40: =SUM(BW40:BZ40)
+      BB40: =BB154
+      BC40: =BC154
+      BD40: =BD154
+    ** Does NOT reference any ASE sheets
+
+  Sheet: FX
+    Rows analyzed: 9, Max column: 3
+    Total cells with data: 12
+    Formula cells: 0
+    Hardcoded value cells: 12
+    Cross-sheet references: None
+    ** Does NOT reference any ASE sheets
+
+  Sheet: Net income bridge
+    Rows analyzed: 44, Max column: 16
+    Total cells with data: 65
+    Formula cells: 16
+    Hardcoded value cells: 49
+    Formula complexity: simple=16, medium=0, complex=0
+    Unique functions (1): SUM(2)
+    Cross-sheet references: None
+    Sample formulas:
+      K7: =SUM(C7:J7)
+      P7: =SUM(K7:O7)
+      C10: =C7/$C$3
+      D10: =D7/$C$3
+      E10: =E7/$C$3
+    ** Does NOT reference any ASE sheets
+
+  Sheet: Valuation
+    Rows analyzed: 37, Max column: 21
+    Total cells with data: 146
+    Formula cells: 65
+    Hardcoded value cells: 81
+    Formula complexity: simple=38, medium=11, complex=16
+    Unique functions (7): INPUTS(9), XLFN.XLOOKUP(8), XNPV(8), MAX(2), MROUND(1), AVERAGE(1), SUM(1)
+    Cross-sheet references to: Dashboard, HoldCo_Facility, Time Inputs (Q)
+    Sample formulas:
+      C3: =_xlfn.XLOOKUP(C2,HoldCo_Facility!$M$5:$KB$5,HoldCo_Facility!$M$373:$KB$373)
+      D3: =_xlfn.XLOOKUP(D2,HoldCo_Facility!$M$5:$KB$5,HoldCo_Facility!$M$373:$KB$373)
+      E3: =_xlfn.XLOOKUP(E2,HoldCo_Facility!$M$5:$KB$5,HoldCo_Facility!$M$373:$KB$373)
+      F3: =_xlfn.XLOOKUP(F2,HoldCo_Facility!$M$5:$KB$5,HoldCo_Facility!$M$373:$KB$373)
+      G3: =_xlfn.XLOOKUP(G2,HoldCo_Facility!$M$5:$KB$5,HoldCo_Facility!$M$373:$KB$373)
+    ** References ASE sheets: Dashboard, HoldCo_Facility, Time Inputs (Q)
+
+  Sheet: Log
+    Rows analyzed: 102, Max column: 5
+    Total cells with data: 16
+    Formula cells: 1
+    Hardcoded value cells: 15
+    Formula complexity: simple=1, medium=0, complex=0
+    Unique functions (1): COUNT(1)
+    Cross-sheet references: None
+    Sample formulas:
+      C5: =COUNT($C$7:$C$101)+1
+    ** Does NOT reference any ASE sheets
+
+  Sheet: Graphs
+    Rows analyzed: 194, Max column: 22
+    Total cells with data: 331
+    Formula cells: 187
+    Hardcoded value cells: 144
+    Formula complexity: simple=166, medium=21, complex=0
+    Unique functions (4): SUM(74), VALUATION(12), EOMONTH(4), INPUTS(1)
+    Cross-sheet references to: Asset workings, BS projection - aggregate, FY26A-29F BS Breakdown, HoldCo CFs & Valuation, HoldCo_Facility, PnL projection - aggregate, ProjectSummary, Tables, Time Inputs (A), Valuation (2)
+    Sample formulas:
+      D3: =Tables!$D4
+      E3: =Tables!$D5
+      F3: =Tables!$D6
+      G3: =Tables!$D7
+      H3: =Tables!$D8
+    ** References ASE sheets: HoldCo CFs & Valuation, HoldCo_Facility, ProjectSummary, Time Inputs (A)
+
+  Sheet: Tables
+    Rows analyzed: 68, Max column: 18
+    Total cells with data: 407
+    Formula cells: 209
+    Hardcoded value cells: 198
+    Formula complexity: simple=204, medium=5, complex=0
+    Unique functions (2): SUM(65), INPUTS(5)
+    Cross-sheet references to: Asset workings, CF Capital Strategy, Charts, FY26A-29F BS Breakdown, HoldCo CFs & Valuation, PnL projection - aggregate, ProjectSummary, Time Inputs (A), Time Inputs (Q)
+    Sample formulas:
+      K2: ='Time Inputs (A)'!H57
+      D4: =Charts!AO382
+      E4: =Charts!AS382
+      F4: =Charts!AW382
+      G4: =Charts!BA382
+    ** References ASE sheets: Charts, HoldCo CFs & Valuation, ProjectSummary, Time Inputs (A), Time Inputs (Q)
+
+  Sheet: Asset workings
+    Rows analyzed: 500, Max column: 227
+    Total cells with data: 105325
+    Formula cells: 105044
+    Hardcoded value cells: 281
+    Formula complexity: simple=28291, medium=76753, complex=0
+    Unique functions (11): IF(76064), IFERROR(50744), SUMIFS(50268), SUM(26231), MATCH(476), INDEX(476), EOMONTH(213), ROUNDUP(213), MONTH(213), YEAR(213), MAX(4)
+    Cross-sheet references to: Charts, HoldCo CFs & Valuation, Project Info, Quarterly Output
+    Sample formulas:
+      O4: ='Quarterly Output'!M2
+      P4: =O5+1
+      Q4: =P5+1
+      R4: =Q5+1
+      S4: =R5+1
+    ** References ASE sheets: Charts, HoldCo CFs & Valuation, Project Info, Quarterly Output
+
+
+--------------------------------------------------------------------------------
+STRUCTURAL SIMILARITY AMONG GTC SHEETS
+--------------------------------------------------------------------------------
+
+  Structural similarity by dimensions and formula patterns:
+    Group (max_col=8, num_funcs=2, has_complex=False):
+      FY26B PL Mapping: 105 cells, 31 formulas
+      FY26B BS Mapping: 104 cells, 39 formulas
+
+
+====================================================================================================
+PART C: CROSS-SHEET DEPENDENCY MAP
+====================================================================================================
+
+--- Input Sheets (F1) Dependencies ---
+
+  Project Info --> Checks, Country Inputs, Dashboard, Sensis, Time Inputs (A), Time Inputs (M), Time Inputs (Q)
+  Country Inputs --> Checks, Project Info
+  Financing Inputs --> Checks, Project Level Workings, Sensis
+  Time Inputs (A) --> Checks, Project Info, Project Level Workings, Sensis, Time Inputs (Q)
+  Time Inputs (M) --> Checks, Dashboard, HoldCo CFs & Valuation
+  Time Inputs (Q) --> Checks, Project Info
+  Sensis --> (no cross-sheet references)
+
+--- GTC Sheets (F2) Dependencies ---
+
+  Instruction tab --> (no cross-sheet references)
+  Summary sheet --> GTC/Other sheets: BS projection - aggregate, CF Capital Strategy, PnL projection - aggregate, REF, Valuation (2)
+  PnL projection - aggregate --> GTC/Other sheets: FY26A-29F PL Breakdown, FY26B PL Mapping, REF
+  FY26A-29F PL Breakdown --> ASE sheets: HoldCo_Facility, Time Inputs (A)
+  FY26B PL Mapping --> ASE sheets: Time Inputs (A)
+  BS projection - aggregate --> GTC/Other sheets: FY26A-29F BS Breakdown, FY26B BS Mapping
+  FY26A-29F BS Breakdown --> ASE sheets: Time Inputs (A); GTC/Other sheets: CF Capital Strategy Breakdown, FY26A-29F PL Breakdown
+  FY26B BS Mapping --> ASE sheets: Time Inputs (A)
+  CF Capital Strategy --> GTC/Other sheets: BS projection - aggregate, CF Capital Strategy Breakdown
+  CF Capital Strategy Breakdown --> ASE sheets: HoldCo_Facility, Time Inputs (A); GTC/Other sheets: FY26A-29F BS Breakdown, FY26A-29F PL Breakdown, PnL projection - aggregate
+  Q Rep (USD) --> GTC/Other sheets: QRep(EUR)
+  Valuation (2) --> ASE sheets: HoldCo_Facility, Time Inputs (A); GTC/Other sheets: Valuation
+  Cash Breakeven --> ASE sheets: HoldCo CFs & Valuation, HoldCo_Summary, Time Inputs (A); GTC/Other sheets: CF Capital Strategy Breakdown, FY26A-29F PL Breakdown
+  QRep(EUR) --> GTC/Other sheets: Valuation
+  FX --> (no cross-sheet references)
+  Net income bridge --> (no cross-sheet references)
+  Valuation --> ASE sheets: Dashboard, HoldCo_Facility, Time Inputs (Q)
+  Log --> (no cross-sheet references)
+  Graphs --> ASE sheets: HoldCo CFs & Valuation, HoldCo_Facility, ProjectSummary, Time Inputs (A); GTC/Other sheets: Asset workings, BS projection - aggregate, FY26A-29F BS Breakdown, PnL projection - aggregate, Tables, Valuation (2)
+  Tables --> ASE sheets: Charts, HoldCo CFs & Valuation, ProjectSummary, Time Inputs (A), Time Inputs (Q); GTC/Other sheets: Asset workings, CF Capital Strategy, FY26A-29F BS Breakdown, PnL projection - aggregate
+  Asset workings --> ASE sheets: Charts, HoldCo CFs & Valuation, Project Info, Quarterly Output
+
+--- All F2 Sheets Dependencies (common sheets included) ---
+
+  Instruction tab --> (no cross-sheet references)
+  Summary sheet --> BS projection - aggregate, CF Capital Strategy, PnL projection - aggregate, REF, Valuation (2)
+  PnL projection - aggregate --> FY26A-29F PL Breakdown, FY26B PL Mapping, REF
+  FY26A-29F PL Breakdown --> HoldCo_Facility, Time Inputs (A)
+  FY26B PL Mapping --> Time Inputs (A)
+  BS projection - aggregate --> FY26A-29F BS Breakdown, FY26B BS Mapping
+  FY26A-29F BS Breakdown --> CF Capital Strategy Breakdown, FY26A-29F PL Breakdown, Time Inputs (A)
+  FY26B BS Mapping --> Time Inputs (A)
+  CF Capital Strategy --> BS projection - aggregate, CF Capital Strategy Breakdown
+  CF Capital Strategy Breakdown --> FY26A-29F BS Breakdown, FY26A-29F PL Breakdown, HoldCo_Facility, PnL projection - aggregate, Time Inputs (A)
+  Q Rep (USD) --> QRep(EUR)
+  Valuation (2) --> HoldCo_Facility, Time Inputs (A), Valuation
+  Cash Breakeven --> CF Capital Strategy Breakdown, FY26A-29F PL Breakdown, HoldCo CFs & Valuation, HoldCo_Summary, Time Inputs (A)
+  QRep(EUR) --> Valuation
+  Disclaimer --> (no cross-sheet references)
+  FX --> (no cross-sheet references)
+  Net income bridge --> (no cross-sheet references)
+  Sensis --> (no cross-sheet references)
+  Valuation --> Dashboard, HoldCo_Facility, Time Inputs (Q)
+  Checks --> HoldCo CFs & Valuation, HoldCo_Facility, Quarterly Output
+  Log --> (no cross-sheet references)
+  Graphs --> Asset workings, BS projection - aggregate, FY26A-29F BS Breakdown, HoldCo CFs & Valuation, HoldCo_Facility, PnL projection - aggregate, ProjectSummary, Tables, Time Inputs (A), Valuation (2)
+  Tables --> Asset workings, CF Capital Strategy, Charts, FY26A-29F BS Breakdown, HoldCo CFs & Valuation, PnL projection - aggregate, ProjectSummary, Time Inputs (A), Time Inputs (Q)
+  ProjectSummary --> Charts, HoldCo CFs & Valuation, HoldCo_Facility, Project Info, Quarterly Output
+  Dashboard --> HoldCo CFs & Valuation
+  HoldCo_Summary --> Charts, HoldCo CFs & Valuation, HoldCo_Facility
+  BESS DCF Multiple Analysis --> HoldCo CFs & Valuation, ProjectSummary
+  Charts --> HoldCo CFs & Valuation, HoldCo_Summary, Project Info, Quarterly Output
+  Project Info --> Country Inputs, Dashboard, Sensis, Time Inputs (A), Time Inputs (M)
+  Asset workings --> Charts, HoldCo CFs & Valuation, Project Info, Quarterly Output
+  HoldCo CFs & Valuation --> Country Inputs, Dashboard, Project Info, Quarterly Output, Time Inputs (A)
+  HoldCo_Facility --> Charts, Dashboard, HoldCo CFs & Valuation, HoldCo income, HoldCo_Summary, Project Info, Quarterly Output, Time Inputs (A), Time Inputs (Q), Valuation (2)
+  Inputs> --> (no cross-sheet references)
+  HoldCo income --> HoldCo CFs & Valuation, Project Info, Quarterly Output
+  Time Inputs (A) --> FX, Project Info, Project Level Workings, Sensis, Time Inputs (Q)
+  Time Inputs (Q) --> Project Info
+  Country Inputs --> Project Info
+  Financing Inputs --> Project Level Workings, Sensis
+  Time Inputs (M) --> Dashboard, HoldCo CFs & Valuation
+  Workings> --> (no cross-sheet references)
+  Project Level Workings --> Country Inputs, Dashboard, Project Info, Sensis, Time Inputs (A), Time Inputs (M), Time Inputs (Q)
+  Pasted> --> (no cross-sheet references)
+  Project Level Macro Paste --> Project Level Workings
+  Quarterly Output --> Project Info
+  END --> (no cross-sheet references)
+
+====================================================================================================
+SUMMARY STATISTICS
+====================================================================================================
+
+--- Input Sheets Summary ---
+  Total cells: 228047
+  Formula cells: 193016
+  Hardcoded cells: 35031
+  Numeric input levers: 25063
+  Unique functions across all input sheets: 27
+  Functions: AND, AVERAGE, AVERAGEIFS, COUNTIFS, DATEDIF, DAY, EDATE, EOMONTH, IF, IFERROR, INDEX, INPUTS, LOOKUP, MATCH, MAX, MIN, MONTH, OR, ROUNDUP, SUM, SUMIFS, XLFN.MAXIFS, XLFN.MINIFS, XLFN.SINGLE, XLFN.XLOOKUP, XLFN._TRO_TRAILING, YEAR
+
+--- GTC Sheets Summary ---
+  Total GTC sheets: 21
+  Total cells: 161782
+  Formula cells: 142589
+  Hardcoded cells: 19193
+  Formula complexity: simple=59011, medium=83562, complex=16
+  Unique functions across all GTC sheets: 24
+  Functions: AVERAGE, COUNT, EOMONTH, IF, IFERROR, INDEX, INPUTS, MATCH, MAX, MIN, MONTH, MROUND, QREP, REP, ROUND, ROUNDUP, SUBTOTAL, SUM, SUMIF, SUMIFS, VALUATION, XLFN.XLOOKUP, XNPV, YEAR
+
+  GTC sheets referencing ASE sheets: 11
+    FY26A-29F PL Breakdown --> HoldCo_Facility, Time Inputs (A)
+    FY26B PL Mapping --> Time Inputs (A)
+    FY26A-29F BS Breakdown --> Time Inputs (A)
+    FY26B BS Mapping --> Time Inputs (A)
+    CF Capital Strategy Breakdown --> HoldCo_Facility, Time Inputs (A)
+    Valuation (2) --> HoldCo_Facility, Time Inputs (A)
+    Cash Breakeven --> HoldCo CFs & Valuation, HoldCo_Summary, Time Inputs (A)
+    Valuation --> Dashboard, HoldCo_Facility, Time Inputs (Q)
+    Graphs --> HoldCo CFs & Valuation, HoldCo_Facility, ProjectSummary, Time Inputs (A)
+    Tables --> Charts, HoldCo CFs & Valuation, ProjectSummary, Time Inputs (A), Time Inputs (Q)
+    Asset workings --> Charts, HoldCo CFs & Valuation, Project Info, Quarterly Output
+
+====================================================================================================
+END OF ANALYSIS
+====================================================================================================

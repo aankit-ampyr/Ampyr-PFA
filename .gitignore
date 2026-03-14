@@ -1,0 +1,22 @@
+# Excel model files (too large for GitHub, contain sensitive financial data)
+*.xlsb
+*.xlsm
+*.xlsx
+!Ref Docs/Ampyr Financial Model Digitisation timeline.xlsx
+
+# Node modules
+node_modules/
+package-lock.json
+
+# Python
+__pycache__/
+*.pyc
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Claude internal files
+.claude/projects/
+.claude/plans/

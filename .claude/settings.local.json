@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install pyxlsb openpyxl)",
+      "Bash(python3:*)",
+      "Bash(where python)",
+      "Bash(python -m pip install pyxlsb)",
+      "Bash(python -c \"import pyxlsb; print\\(''pyxlsb OK''\\)\")",
+      "Bash(python:*)",
+      "Bash(node create_plan.js)",
+      "Bash(pip install defusedxml)",
+      "Bash(dir \"C:\\\\repos\\\\Ampyr-PFA\\\\Ref Docs\\\\Project_Parthenon_Development_Plan.docx\")",
+      "Bash(node create_timeline.js)",
+      "Bash(find C:reposAmpyr-PFA -path */Macros/* -type f)"
+    ]
+  }
+}
