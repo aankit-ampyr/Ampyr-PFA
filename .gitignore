@@ -1,8 +1,7 @@
-# Excel model files (too large for GitHub, contain sensitive financial data)
+# Excel files - only converted .xlsm tracked via Git LFS
 *.xlsb
-*.xlsm
 *.xlsx
-!Ref Docs/Ampyr Financial Model Digitisation timeline.xlsx
+~$*
 
 # Node modules
 node_modules/
