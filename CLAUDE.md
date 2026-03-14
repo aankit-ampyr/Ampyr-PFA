@@ -97,4 +97,26 @@ Most frequent: SUM(160), IF(123), SUMIFS(81), MAX(75), MIN(62), INDEX/MATCH(60 e
 
 ## Current Phase
 
-Phase 1 (pre-development): No application code exists yet. Start by reading `docs/DEVELOPMENT_SPEC.md` for full context, then scaffold the project (pyproject.toml, docker-compose, alembic) and implement SQLAlchemy models. Do not begin engine work until the DB schema is complete and migrated.
+**Phase 0 COMPLETE — Project scaffolding done (2026-03-14)**
+
+What's been set up:
+- Python 3.12 venv created with all dependencies installed (`requirements.txt`)
+- `docker-compose.yml` configured for PostgreSQL 16 (local Docker)
+- Alembic initialized (`alembic.ini` + `migrations/`)
+- App package structure created: `app/{models,ingestion,engine,api,reports,ui}/`
+- `app/config.py` and `app/database.py` — settings and DB session management
+- Test directories: `tests/{engine,validation}/`
+- Ruff configured (`ruff.toml`), `.env.example` provided
+- Project files reorganized from flat `Ref Docs/` into `docs/`, `data/`, `macros/`, `scripts/`, `archive/`
+
+**Next: Phase 1 — Database schema & ingestion**
+
+To resume development:
+1. `python -m venv .venv && .venv/Scripts/activate && pip install -r requirements.txt`
+2. `docker-compose up -d db`
+3. Read `docs/DEVELOPMENT_SPEC.md` for full architecture and schema design
+4. Implement SQLAlchemy models in `app/models/` (Asset, TimeSeries, Scenario, Version)
+5. Generate and run Alembic migration: `alembic revision --autogenerate -m "initial schema" && alembic upgrade head`
+6. Do NOT begin engine work until the DB schema is complete and migrated
+
+Active branch: `Prototype`
