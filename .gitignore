@@ -3,14 +3,21 @@
 *.xlsx
 ~$*
 
-# Node modules
+# Node modules (legacy, now in archive/)
 node_modules/
-package-lock.json
+
+# Archive folder - superseded files
+archive/
 
 # Python
 __pycache__/
 *.pyc
+*.pyo
 .env
+.venv/
+*.egg-info/
+dist/
+build/
 
 # OS files
 .DS_Store

@@ -11,7 +11,18 @@
       "Bash(pip install defusedxml)",
       "Bash(dir \"C:\\\\repos\\\\Ampyr-PFA\\\\Ref Docs\\\\Project_Parthenon_Development_Plan.docx\")",
       "Bash(node create_timeline.js)",
-      "Bash(find C:reposAmpyr-PFA -path */Macros/* -type f)"
+      "Bash(find C:reposAmpyr-PFA -path */Macros/* -type f)",
+      "Bash(git lfs:*)",
+      "WebSearch",
+      "Bash(find /c/repos/Ampyr-PFA -maxdepth 3 -type f -name *.py)",
+      "Bash(git -C /c/repos/Ampyr-PFA log --oneline --all)",
+      "Bash(git -C /c/repos/Ampyr-PFA remote -v)",
+      "Bash(while read:*)",
+      "Bash(do echo:*)",
+      "Read(//c/repos/Ampyr-PFA/**)",
+      "Bash(done)",
+      "Bash(source .venv/Scripts/activate)",
+      "Bash(pip install:*)"
     ]
   }
 }
