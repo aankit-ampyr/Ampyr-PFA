@@ -1,0 +1,47 @@
+Scanning PLW rows...
+C:\repos\Ampyr-PFA\.venv\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Data Validation extension is not supported and will be removed
+  warn(msg)
+
+PLW summary:
+  rows_with_any_timeaxis_formula: 915
+  edge_case_rows_count: 75
+  edge_case_rows: 30 items (first 3: [5, 49, 84])
+  full_421_span_rows: 876
+  partial_span_rows: 39
+  partial_span_sample: 30 items (first 3: [{'row': 135, 'n': 391, 'label': ''}, {'row': 168, 'n': 420, 'label': ''}, {'row': 169, 'n': 420, 'label': ''}])
+  col_coverage_first10: 10 items (first 3: [(28, 914), (29, 914), (30, 914)])
+  col_coverage_last10: 10 items (first 3: [(424, 914), (425, 914), (426, 914)])
+
+Cross-sheet references from PLW (top 15):
+  Time Inputs (A)                          64413
+  Time Inputs (M)                          13472
+  Project Level Workings                   12630
+  Project Info                             842
+  Project Level Macro Paste                842
+
+Function usage in PLW time-axis formulas (top 25):
+  SUM                       79957
+  IF                        73649
+  SUMIFS                    41257
+  MATCH                     40416
+  MAX                       32839
+  XLOOKUP                   29470
+  MIN                       28626
+  INDEX                     25260
+  IFERROR                   24417
+  AND                       20206
+  SINGLE                    10102
+  OR                        8819
+  MONTH                     8799
+  ROUND                     5894
+  YEAR                      2526
+  EOMONTH                   1684
+  NOT                       1684
+  MOD                       1263
+  SUMIF                     1263
+  SUMPRODUCT                841
+  ROUNDUP                   421
+  YEARFRAC                  421
+  LOOKUP                    421
+  ABS                       421
+  OFFSET                    421

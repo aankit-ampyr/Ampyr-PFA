@@ -1,0 +1,29 @@
+Loading non-read-only (slower)...
+C:\repos\Ampyr-PFA\.venv\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Data Validation extension is not supported and will be removed
+  warn(msg)
+  Disclaimer                               dv=0 cf=0 hidden_rows=12 hidden_cols=2 state=visible
+  Pltfrm Costs Devex Analysis              dv=0 cf=5 hidden_rows=0 hidden_cols=2 state=visible
+  Sensis                                   dv=6 cf=1 hidden_rows=0 hidden_cols=2 state=visible
+  Checks                                   dv=0 cf=5 hidden_rows=0 hidden_cols=1 state=visible
+  Dashboard                                dv=3 cf=4 hidden_rows=3 hidden_cols=3 state=visible
+  BESS DCF Multiple Analysis               dv=0 cf=1 hidden_rows=3 hidden_cols=3 state=visible
+  ProjectSummary                           dv=0 cf=12 hidden_rows=3 hidden_cols=3 state=visible
+  HoldCo_Summary                           dv=0 cf=1 hidden_rows=4 hidden_cols=141 state=visible
+  Charts                                   dv=0 cf=9 hidden_rows=90 hidden_cols=2 state=visible
+  HoldCo_Facility                          dv=0 cf=49 hidden_rows=1 hidden_cols=3 state=visible
+  HoldCo income                            dv=0 cf=2 hidden_rows=609 hidden_cols=1 state=visible
+  HoldCo CFs & Valuation                   dv=0 cf=10 hidden_rows=0 hidden_cols=1 state=visible
+  Inputs>                                  dv=0 cf=0 hidden_rows=0 hidden_cols=1 state=visible
+  Project Info                             dv=15 cf=52 hidden_rows=0 hidden_cols=4 state=visible
+  Country Inputs                           dv=2 cf=1 hidden_rows=0 hidden_cols=1 state=visible
+  Financing Inputs                         dv=1 cf=1 hidden_rows=0 hidden_cols=2 state=visible
+  Time Inputs (A)                          dv=0 cf=1 hidden_rows=448 hidden_cols=14 state=visible
+  Time Inputs (M)                          dv=0 cf=3 hidden_rows=574 hidden_cols=5 state=visible
+  Time Inputs (Q)                          dv=0 cf=1 hidden_rows=0 hidden_cols=2 state=visible
+  Workings>                                dv=0 cf=0 hidden_rows=0 hidden_cols=1 state=visible
+  Project Level Workings                   dv=0 cf=34 hidden_rows=0 hidden_cols=1 state=visible
+  Project Level Macro Paste                dv=0 cf=0 hidden_rows=0 hidden_cols=1 state=visible
+  Quarterly Output                         dv=0 cf=0 hidden_rows=1 hidden_cols=1 state=visible
+  END                                      dv=0 cf=0 hidden_rows=0 hidden_cols=1 state=visible
+
+Done.

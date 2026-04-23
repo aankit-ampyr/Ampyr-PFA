@@ -1,0 +1,168 @@
+{
+  "params": [
+    [
+      1,
+      "Project Parthenon"
+    ],
+    [
+      2,
+      "Project Info"
+    ],
+    [
+      18,
+      "Timings"
+    ],
+    [
+      20,
+      "Solar+BESS"
+    ],
+    [
+      49,
+      "BESS"
+    ],
+    [
+      61,
+      "Asset sales"
+    ],
+    [
+      79,
+      "Production"
+    ],
+    [
+      119,
+      "Construction"
+    ],
+    [
+      173,
+      "Revenues"
+    ],
+    [
+      174,
+      "PPA / Subsidy contracts"
+    ],
+    [
+      267,
+      "Merchant"
+    ],
+    [
+      280,
+      "Solar- Embedded Benefits - 11kV"
+    ],
+    [
+      291,
+      "Q1"
+    ],
+    [
+      292,
+      "Q2"
+    ],
+    [
+      293,
+      "Q3"
+    ],
+    [
+      294,
+      "Q4"
+    ],
+    [
+      296,
+      "BESS offtake"
+    ],
+    [
+      298,
+      "Merchant"
+    ],
+    [
+      305,
+      "Continuous Intraday Trading (CIDT)"
+    ],
+    [
+      313,
+      "Contracted"
+    ],
+    [
+      335,
+      "BESS Other Revenue Markets"
+    ],
+    [
+      345,
+      "Opex"
+    ],
+    [
+      428,
+      "BESS"
+    ],
+    [
+      452,
+      "Working capital"
+    ],
+    [
+      457,
+      "Tax"
+    ],
+    [
+      484,
+      "Macro"
+    ],
+    [
+      492,
+      "Financing Terms"
+    ],
+    [
+      503,
+      "VAT Loan"
+    ],
+    [
+      505,
+      "Senior Debt"
+    ],
+    [
+      513,
+      "VAT"
+    ],
+    [
+      517,
+      "Capex - Solar"
+    ],
+    [
+      523,
+      "Devex - Solar"
+    ],
+    [
+      527,
+      "Capex - BESS"
+    ],
+    [
+      532,
+      "O&M"
+    ],
+    [
+      548,
+      "D&A rates"
+    ],
+    [
+      550,
+      "Solar"
+    ],
+    [
+      559,
+      "BESS"
+    ],
+    [
+      566,
+      "Success Factor"
+    ],
+    [
+      570,
+      "Other"
+    ],
+    [
+      584,
+      "Inputs (DO NOT DELETE)"
+    ],
+    [
+      596,
+      "End"
+    ]
+  ]
+}

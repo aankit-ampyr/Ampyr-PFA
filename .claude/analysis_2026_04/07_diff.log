@@ -1,0 +1,31 @@
+Loading F1 (data_only)...
+Loading F3 (data_only)...
+
+Project Info: F1 dim 597x233, F3 dim 595x233
+C:\repos\Ampyr-PFA\.venv\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Data Validation extension is not supported and will be removed
+  warn(msg)
+  138635 cells scanned, 50330 differ
+
+Country Inputs: F1 dim 133x11, F3 dim 133x11
+  1463 cells scanned, 2 differ
+
+Financing Inputs: F1 dim 77x325, F3 dim 77x325
+  25025 cells scanned, 29 differ
+
+Time Inputs (A): F1 dim 651x325, F3 dim 651x325
+  211575 cells scanned, 1129 differ
+
+Time Inputs (Q): F1 dim 254x336, F3 dim 254x336
+  85344 cells scanned, 35955 differ
+
+Sensis: F1 dim 140x56, F3 dim 140x56
+  7840 cells scanned, 2 differ
+
+
+Reloading with formulas for PLW...
+
+Project Level Workings: F1 1597x16384 vs F3 1597x16384
+  Rows with changed formula hash: 184 (of 1597)
+  Sample changed rows: [3, 17, 19, 20, 21, 22, 139, 140, 141, 190, 191, 194, 195, 200, 202, 204, 205, 206, 209, 210]
+
+Written c:\repos\Ampyr-PFA\.claude\analysis_2026_04\07_quarterly_diff.json

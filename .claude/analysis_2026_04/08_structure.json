@@ -1,0 +1,202 @@
+{
+  "Disclaimer": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 0,
+    "hidden_rows": 12,
+    "hidden_cols": 2,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Pltfrm Costs Devex Analysis ": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 5,
+    "hidden_rows": 0,
+    "hidden_cols": 2,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Sensis": {
+    "data_validations": 6,
+    "conditional_formatting_rules": 1,
+    "hidden_rows": 0,
+    "hidden_cols": 2,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Checks": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 5,
+    "hidden_rows": 0,
+    "hidden_cols": 1,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Dashboard": {
+    "data_validations": 3,
+    "conditional_formatting_rules": 4,
+    "hidden_rows": 3,
+    "hidden_cols": 3,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "BESS DCF Multiple Analysis": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 1,
+    "hidden_rows": 3,
+    "hidden_cols": 3,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "ProjectSummary": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 12,
+    "hidden_rows": 3,
+    "hidden_cols": 3,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "HoldCo_Summary": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 1,
+    "hidden_rows": 4,
+    "hidden_cols": 141,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Charts": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 9,
+    "hidden_rows": 90,
+    "hidden_cols": 2,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "HoldCo_Facility": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 49,
+    "hidden_rows": 1,
+    "hidden_cols": 3,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "HoldCo income": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 2,
+    "hidden_rows": 609,
+    "hidden_cols": 1,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "HoldCo CFs & Valuation": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 10,
+    "hidden_rows": 0,
+    "hidden_cols": 1,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Inputs>": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 0,
+    "hidden_rows": 0,
+    "hidden_cols": 1,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Project Info": {
+    "data_validations": 15,
+    "conditional_formatting_rules": 52,
+    "hidden_rows": 0,
+    "hidden_cols": 4,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Country Inputs": {
+    "data_validations": 2,
+    "conditional_formatting_rules": 1,
+    "hidden_rows": 0,
+    "hidden_cols": 1,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Financing Inputs": {
+    "data_validations": 1,
+    "conditional_formatting_rules": 1,
+    "hidden_rows": 0,
+    "hidden_cols": 2,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Time Inputs (A)": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 1,
+    "hidden_rows": 448,
+    "hidden_cols": 14,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Time Inputs (M)": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 3,
+    "hidden_rows": 574,
+    "hidden_cols": 5,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Time Inputs (Q)": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 1,
+    "hidden_rows": 0,
+    "hidden_cols": 2,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Workings>": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 0,
+    "hidden_rows": 0,
+    "hidden_cols": 1,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Project Level Workings": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 34,
+    "hidden_rows": 0,
+    "hidden_cols": 1,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Pasted>": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 0,
+    "hidden_rows": 0,
+    "hidden_cols": 0,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Project Level Macro Paste": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 0,
+    "hidden_rows": 0,
+    "hidden_cols": 1,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "Quarterly Output": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 0,
+    "hidden_rows": 1,
+    "hidden_cols": 1,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  },
+  "END": {
+    "data_validations": 0,
+    "conditional_formatting_rules": 0,
+    "hidden_rows": 0,
+    "hidden_cols": 1,
+    "sheet_state": "visible",
+    "protection_enabled": false
+  }
+}

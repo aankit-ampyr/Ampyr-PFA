@@ -1,0 +1,1527 @@
+{
+  "Disclaimer": {
+    "cells": 25,
+    "formulas": 0,
+    "hardcoded_numeric": 3,
+    "hardcoded_text": 22,
+    "complexity": {
+      "simple": 0,
+      "medium": 0,
+      "complex": 0,
+      "other": 0
+    },
+    "fn_top20": [],
+    "fn_total_calls": 0,
+    "cross_sheet_top10": []
+  },
+  "Pltfrm Costs Devex Analysis ": {
+    "cells": 5010,
+    "formulas": 4959,
+    "hardcoded_numeric": 2,
+    "hardcoded_text": 49,
+    "complexity": {
+      "simple": 2814,
+      "medium": 2145,
+      "complex": 0,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "SUM",
+        865
+      ],
+      [
+        "IF",
+        852
+      ],
+      [
+        "ROUNDUP",
+        426
+      ],
+      [
+        "AND",
+        214
+      ],
+      [
+        "MAX",
+        214
+      ],
+      [
+        "EOMONTH",
+        213
+      ],
+      [
+        "MONTH",
+        213
+      ],
+      [
+        "YEAR",
+        213
+      ]
+    ],
+    "fn_total_calls": 3210,
+    "cross_sheet_top10": [
+      [
+        "HoldCo_Facility",
+        1928
+      ],
+      [
+        "Checks",
+        2
+      ],
+      [
+        "Quarterly Output",
+        1
+      ]
+    ]
+  },
+  "Sensis": {
+    "cells": 252,
+    "formulas": 49,
+    "hardcoded_numeric": 26,
+    "hardcoded_text": 177,
+    "complexity": {
+      "simple": 48,
+      "medium": 1,
+      "complex": 0,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "LOOKUP",
+        1
+      ]
+    ],
+    "fn_total_calls": 1,
+    "cross_sheet_top10": []
+  },
+  "Checks": {
+    "cells": 1229,
+    "formulas": 1206,
+    "hardcoded_numeric": 1,
+    "hardcoded_text": 22,
+    "complexity": {
+      "simple": 244,
+      "medium": 242,
+      "complex": 720,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "INDEX",
+        960
+      ],
+      [
+        "MATCH",
+        960
+      ],
+      [
+        "IFERROR",
+        720
+      ],
+      [
+        "AND",
+        1
+      ],
+      [
+        "ROUND",
+        1
+      ]
+    ],
+    "fn_total_calls": 2642,
+    "cross_sheet_top10": [
+      [
+        "Checks",
+        1560
+      ],
+      [
+        "Quarterly Output",
+        1440
+      ],
+      [
+        "Project Info",
+        240
+      ],
+      [
+        "HoldCo CFs & Valuation",
+        120
+      ],
+      [
+        "HoldCo_Facility",
+        6
+      ]
+    ]
+  },
+  "Dashboard": {
+    "cells": 458,
+    "formulas": 133,
+    "hardcoded_numeric": 138,
+    "hardcoded_text": 187,
+    "complexity": {
+      "simple": 102,
+      "medium": 31,
+      "complex": 0,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "INDEX",
+        20
+      ],
+      [
+        "MATCH",
+        20
+      ],
+      [
+        "EOMONTH",
+        10
+      ],
+      [
+        "DATE",
+        1
+      ]
+    ],
+    "fn_total_calls": 51,
+    "cross_sheet_top10": [
+      [
+        "HoldCo CFs & Valuation",
+        40
+      ],
+      [
+        "Dashboard",
+        20
+      ],
+      [
+        "Checks",
+        2
+      ]
+    ]
+  },
+  "BESS DCF Multiple Analysis": {
+    "cells": 417,
+    "formulas": 382,
+    "hardcoded_numeric": 1,
+    "hardcoded_text": 34,
+    "complexity": {
+      "simple": 186,
+      "medium": 92,
+      "complex": 104,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "MATCH",
+        260
+      ],
+      [
+        "INDEX",
+        156
+      ],
+      [
+        "IFERROR",
+        24
+      ],
+      [
+        "AVERAGEIFS",
+        24
+      ],
+      [
+        "EOMONTH",
+        14
+      ],
+      [
+        "DATE",
+        2
+      ]
+    ],
+    "fn_total_calls": 480,
+    "cross_sheet_top10": [
+      [
+        "HoldCo CFs & Valuation",
+        312
+      ],
+      [
+        "BESS DCF Multiple Analysis",
+        260
+      ],
+      [
+        "ProjectSummary",
+        104
+      ],
+      [
+        "Checks",
+        2
+      ]
+    ]
+  },
+  "ProjectSummary": {
+    "cells": 2232,
+    "formulas": 1926,
+    "hardcoded_numeric": 1,
+    "hardcoded_text": 305,
+    "complexity": {
+      "simple": 377,
+      "medium": 163,
+      "complex": 1386,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "MATCH",
+        1776
+      ],
+      [
+        "IF",
+        1386
+      ],
+      [
+        "INDEX",
+        1308
+      ],
+      [
+        "IFERROR",
+        852
+      ],
+      [
+        "AND",
+        78
+      ],
+      [
+        "ISNUMBER",
+        78
+      ],
+      [
+        "FIND",
+        78
+      ],
+      [
+        "DATE",
+        78
+      ],
+      [
+        "SUMIFS",
+        7
+      ]
+    ],
+    "fn_total_calls": 5641,
+    "cross_sheet_top10": [
+      [
+        "Project Info",
+        1638
+      ],
+      [
+        "Quarterly Output",
+        1056
+      ],
+      [
+        "HoldCo CFs & Valuation",
+        220
+      ],
+      [
+        "HoldCo_Facility",
+        156
+      ],
+      [
+        "ProjectSummary",
+        78
+      ],
+      [
+        "Checks",
+        2
+      ]
+    ]
+  },
+  "HoldCo_Summary": {
+    "cells": 3149,
+    "formulas": 2570,
+    "hardcoded_numeric": 314,
+    "hardcoded_text": 265,
+    "complexity": {
+      "simple": 1081,
+      "medium": 1489,
+      "complex": 0,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "SUM",
+        501
+      ],
+      [
+        "LOOKUP",
+        420
+      ],
+      [
+        "SUMIFS",
+        350
+      ],
+      [
+        "IFERROR",
+        175
+      ],
+      [
+        "EOMONTH",
+        36
+      ],
+      [
+        "MAX",
+        7
+      ]
+    ],
+    "fn_total_calls": 1489,
+    "cross_sheet_top10": [
+      [
+        "Charts",
+        700
+      ],
+      [
+        "HoldCo_Facility",
+        500
+      ],
+      [
+        "HoldCo CFs & Valuation",
+        212
+      ],
+      [
+        "ProjectSummary",
+        14
+      ],
+      [
+        "Checks",
+        2
+      ]
+    ]
+  },
+  "Charts": {
+    "cells": 308682,
+    "formulas": 304729,
+    "hardcoded_numeric": 1791,
+    "hardcoded_text": 2162,
+    "complexity": {
+      "simple": 159414,
+      "medium": 141521,
+      "complex": 3794,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "IF",
+        281053
+      ],
+      [
+        "SUMIFS",
+        91503
+      ],
+      [
+        "IFERROR",
+        80176
+      ],
+      [
+        "SUM",
+        4957
+      ],
+      [
+        "XLOOKUP",
+        3165
+      ],
+      [
+        "MATCH",
+        2279
+      ],
+      [
+        "INDEX",
+        1559
+      ],
+      [
+        "EOMONTH",
+        213
+      ],
+      [
+        "ROUNDUP",
+        213
+      ],
+      [
+        "MONTH",
+        213
+      ],
+      [
+        "YEAR",
+        213
+      ],
+      [
+        "MAX",
+        25
+      ]
+    ],
+    "fn_total_calls": 465569,
+    "cross_sheet_top10": [
+      [
+        "Quarterly Output",
+        228513
+      ],
+      [
+        "HoldCo CFs & Valuation",
+        153126
+      ],
+      [
+        "HoldCo_Summary",
+        6330
+      ],
+      [
+        "Project Info",
+        2999
+      ],
+      [
+        "Charts",
+        1352
+      ],
+      [
+        "ProjectSummary",
+        240
+      ],
+      [
+        "HoldCo_Facility",
+        211
+      ]
+    ]
+  },
+  "HoldCo_Facility": {
+    "cells": 92873,
+    "formulas": 92387,
+    "hardcoded_numeric": 16,
+    "hardcoded_text": 470,
+    "complexity": {
+      "simple": 56134,
+      "medium": 21789,
+      "complex": 14464,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "SUMIFS",
+        43099
+      ],
+      [
+        "SUM",
+        20565
+      ],
+      [
+        "MIN",
+        3531
+      ],
+      [
+        "IF",
+        2721
+      ],
+      [
+        "IFERROR",
+        1480
+      ],
+      [
+        "ROUND",
+        1122
+      ],
+      [
+        "MAX",
+        1084
+      ],
+      [
+        "MONTH",
+        552
+      ],
+      [
+        "MOD",
+        552
+      ],
+      [
+        "INDEX",
+        390
+      ],
+      [
+        "MATCH",
+        390
+      ],
+      [
+        "EOMONTH",
+        287
+      ],
+      [
+        "ROUNDUP",
+        276
+      ],
+      [
+        "YEAR",
+        276
+      ],
+      [
+        "OR",
+        276
+      ],
+      [
+        "LOOKUP",
+        276
+      ],
+      [
+        "AVERAGEIFS",
+        4
+      ],
+      [
+        "EDATE",
+        3
+      ],
+      [
+        "AND",
+        3
+      ],
+      [
+        "MAXIFS",
+        2
+      ]
+    ],
+    "fn_total_calls": 76891,
+    "cross_sheet_top10": [
+      [
+        "Quarterly Output",
+        165876
+      ],
+      [
+        "HoldCo CFs & Valuation",
+        26201
+      ],
+      [
+        "HoldCo income",
+        1380
+      ],
+      [
+        "Time Inputs (A)",
+        552
+      ],
+      [
+        "HoldCo_Summary",
+        552
+      ],
+      [
+        "Dashboard",
+        297
+      ],
+      [
+        "HoldCo_Facility",
+        276
+      ],
+      [
+        "Time Inputs (Q)",
+        275
+      ],
+      [
+        "Charts",
+        218
+      ],
+      [
+        "Project Info",
+        100
+      ]
+    ]
+  },
+  "HoldCo income": {
+    "cells": 155291,
+    "formulas": 155117,
+    "hardcoded_numeric": 6,
+    "hardcoded_text": 168,
+    "complexity": {
+      "simple": 27090,
+      "medium": 127307,
+      "complex": 720,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "IFERROR",
+        125112
+      ],
+      [
+        "SUMIFS",
+        124392
+      ],
+      [
+        "SUM",
+        1670
+      ],
+      [
+        "INDEX",
+        720
+      ],
+      [
+        "MATCH",
+        720
+      ],
+      [
+        "IF",
+        600
+      ],
+      [
+        "EOMONTH",
+        213
+      ],
+      [
+        "ROUNDUP",
+        213
+      ],
+      [
+        "MONTH",
+        213
+      ],
+      [
+        "YEAR",
+        213
+      ],
+      [
+        "MAX",
+        6
+      ]
+    ],
+    "fn_total_calls": 254072,
+    "cross_sheet_top10": [
+      [
+        "Quarterly Output",
+        373177
+      ],
+      [
+        "HoldCo CFs & Valuation",
+        25560
+      ],
+      [
+        "Project Info",
+        720
+      ],
+      [
+        "Checks",
+        2
+      ]
+    ]
+  },
+  "HoldCo CFs & Valuation": {
+    "cells": 691605,
+    "formulas": 663939,
+    "hardcoded_numeric": 867,
+    "hardcoded_text": 26799,
+    "complexity": {
+      "simple": 162720,
+      "medium": 318699,
+      "complex": 182520,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "IF",
+        692067
+      ],
+      [
+        "IFERROR",
+        284281
+      ],
+      [
+        "MATCH",
+        218615
+      ],
+      [
+        "SUMIFS",
+        205227
+      ],
+      [
+        "AND",
+        179040
+      ],
+      [
+        "INDEX",
+        137495
+      ],
+      [
+        "OR",
+        76680
+      ],
+      [
+        "SUM",
+        30872
+      ],
+      [
+        "NOT",
+        25680
+      ],
+      [
+        "MAX",
+        25586
+      ],
+      [
+        "XNPV",
+        25560
+      ],
+      [
+        "MIN",
+        25560
+      ],
+      [
+        "EOMONTH",
+        213
+      ],
+      [
+        "ROUNDUP",
+        213
+      ],
+      [
+        "MONTH",
+        213
+      ],
+      [
+        "YEAR",
+        213
+      ],
+      [
+        "ISERROR",
+        120
+      ],
+      [
+        "XIRR",
+        120
+      ]
+    ],
+    "fn_total_calls": 1927755,
+    "cross_sheet_top10": [
+      [
+        "Quarterly Output",
+        485482
+      ],
+      [
+        "Dashboard",
+        265920
+      ],
+      [
+        "HoldCo CFs & Valuation",
+        260759
+      ],
+      [
+        "ProjectSummary",
+        76685
+      ],
+      [
+        "Project Info",
+        9362
+      ],
+      [
+        "HoldCo_Summary",
+        426
+      ],
+      [
+        "Country Inputs",
+        240
+      ],
+      [
+        "Time Inputs (A)",
+        240
+      ],
+      [
+        "HoldCo_Facility",
+        121
+      ],
+      [
+        "Charts",
+        115
+      ]
+    ]
+  },
+  "Inputs>": {
+    "cells": 0,
+    "formulas": 0,
+    "hardcoded_numeric": 0,
+    "hardcoded_text": 0,
+    "complexity": {
+      "simple": 0,
+      "medium": 0,
+      "complex": 0,
+      "other": 0
+    },
+    "fn_top20": [],
+    "fn_total_calls": 0,
+    "cross_sheet_top10": []
+  },
+  "Project Info": {
+    "cells": 46805,
+    "formulas": 19908,
+    "hardcoded_numeric": 18652,
+    "hardcoded_text": 8245,
+    "complexity": {
+      "simple": 5186,
+      "medium": 7762,
+      "complex": 6960,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "MATCH",
+        13324
+      ],
+      [
+        "INDEX",
+        7204
+      ],
+      [
+        "IF",
+        3866
+      ],
+      [
+        "EOMONTH",
+        2141
+      ],
+      [
+        "IFERROR",
+        1772
+      ],
+      [
+        "EDATE",
+        1360
+      ],
+      [
+        "MAX",
+        1103
+      ],
+      [
+        "YEAR",
+        961
+      ],
+      [
+        "SUM",
+        851
+      ],
+      [
+        "MIN",
+        361
+      ],
+      [
+        "DATEDIF",
+        360
+      ],
+      [
+        "AND",
+        243
+      ],
+      [
+        "MONTH",
+        240
+      ],
+      [
+        "DAY",
+        240
+      ],
+      [
+        "OR",
+        219
+      ],
+      [
+        "COUNTIFS",
+        1
+      ],
+      [
+        "AVERAGE",
+        1
+      ],
+      [
+        "MINIFS",
+        1
+      ]
+    ],
+    "fn_total_calls": 34248,
+    "cross_sheet_top10": [
+      [
+        "Country Inputs",
+        17719
+      ],
+      [
+        "Project Info",
+        3840
+      ],
+      [
+        "Time Inputs (A)",
+        1713
+      ],
+      [
+        "Dashboard",
+        484
+      ],
+      [
+        "Time Inputs (M)",
+        480
+      ],
+      [
+        "HoldCo CFs & Valuation",
+        360
+      ],
+      [
+        "Time Inputs (Q)",
+        240
+      ],
+      [
+        "Sensis",
+        7
+      ],
+      [
+        "Checks",
+        2
+      ]
+    ]
+  },
+  "Country Inputs": {
+    "cells": 483,
+    "formulas": 22,
+    "hardcoded_numeric": 253,
+    "hardcoded_text": 208,
+    "complexity": {
+      "simple": 22,
+      "medium": 0,
+      "complex": 0,
+      "other": 0
+    },
+    "fn_top20": [],
+    "fn_total_calls": 0,
+    "cross_sheet_top10": [
+      [
+        "Project Info",
+        4
+      ],
+      [
+        "Checks",
+        2
+      ]
+    ]
+  },
+  "Financing Inputs": {
+    "cells": 583,
+    "formulas": 105,
+    "hardcoded_numeric": 333,
+    "hardcoded_text": 145,
+    "complexity": {
+      "simple": 51,
+      "medium": 54,
+      "complex": 0,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "EOMONTH",
+        27
+      ],
+      [
+        "IF",
+        18
+      ],
+      [
+        "AVERAGE",
+        9
+      ]
+    ],
+    "fn_total_calls": 54,
+    "cross_sheet_top10": [
+      [
+        "Project Level Workings",
+        18
+      ],
+      [
+        "Sensis",
+        3
+      ],
+      [
+        "Checks",
+        2
+      ]
+    ]
+  },
+  "Time Inputs (A)": {
+    "cells": 32599,
+    "formulas": 19542,
+    "hardcoded_numeric": 12131,
+    "hardcoded_text": 926,
+    "complexity": {
+      "simple": 16593,
+      "medium": 2789,
+      "complex": 160,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "IF",
+        909
+      ],
+      [
+        "INDEX",
+        701
+      ],
+      [
+        "MATCH",
+        701
+      ],
+      [
+        "SUM",
+        523
+      ],
+      [
+        "IFERROR",
+        468
+      ],
+      [
+        "MIN",
+        332
+      ],
+      [
+        "XLOOKUP",
+        166
+      ],
+      [
+        "SINGLE",
+        164
+      ],
+      [
+        "AVERAGE",
+        128
+      ],
+      [
+        "AVERAGEIFS",
+        26
+      ],
+      [
+        "YEAR",
+        3
+      ]
+    ],
+    "fn_total_calls": 4121,
+    "cross_sheet_top10": [
+      [
+        "Time Inputs (A)",
+        920
+      ],
+      [
+        "Time Inputs (Q)",
+        460
+      ],
+      [
+        "Project Info",
+        161
+      ],
+      [
+        "Project Level Workings",
+        4
+      ],
+      [
+        "Checks",
+        2
+      ],
+      [
+        "Sensis",
+        2
+      ]
+    ]
+  },
+  "Time Inputs (M)": {
+    "cells": 700600,
+    "formulas": 602728,
+    "hardcoded_numeric": 94464,
+    "hardcoded_text": 3408,
+    "complexity": {
+      "simple": 17193,
+      "medium": 352389,
+      "complex": 233146,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "IF",
+        548702
+      ],
+      [
+        "AND",
+        507869
+      ],
+      [
+        "IFERROR",
+        373919
+      ],
+      [
+        "NOT",
+        221399
+      ],
+      [
+        "SUMIFS",
+        80578
+      ],
+      [
+        "MAX",
+        71955
+      ],
+      [
+        "INDEX",
+        12115
+      ],
+      [
+        "MATCH",
+        12115
+      ],
+      [
+        "SUM",
+        10397
+      ],
+      [
+        "EOMONTH",
+        2627
+      ],
+      [
+        "MONTH",
+        2460
+      ],
+      [
+        "YEAR",
+        1845
+      ],
+      [
+        "ROUNDUP",
+        615
+      ],
+      [
+        "MOD",
+        615
+      ],
+      [
+        "MIN",
+        120
+      ],
+      [
+        "DATEDIF",
+        120
+      ]
+    ],
+    "fn_total_calls": 1847451,
+    "cross_sheet_top10": [
+      [
+        "Time Inputs (Q)",
+        43665
+      ],
+      [
+        "HoldCo CFs & Valuation",
+        960
+      ],
+      [
+        "Project Info",
+        860
+      ],
+      [
+        "Dashboard",
+        7
+      ],
+      [
+        "Checks",
+        2
+      ]
+    ]
+  },
+  "Time Inputs (Q)": {
+    "cells": 12054,
+    "formulas": 8147,
+    "hardcoded_numeric": 3793,
+    "hardcoded_text": 114,
+    "complexity": {
+      "simple": 5206,
+      "medium": 2941,
+      "complex": 0,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "IF",
+        2255
+      ],
+      [
+        "EOMONTH",
+        308
+      ],
+      [
+        "YEAR",
+        308
+      ],
+      [
+        "SUM",
+        37
+      ],
+      [
+        "MAXIFS",
+        22
+      ],
+      [
+        "MINIFS",
+        11
+      ]
+    ],
+    "fn_total_calls": 2941,
+    "cross_sheet_top10": [
+      [
+        "Checks",
+        2
+      ],
+      [
+        "Project Info",
+        2
+      ]
+    ]
+  },
+  "Workings>": {
+    "cells": 0,
+    "formulas": 0,
+    "hardcoded_numeric": 0,
+    "hardcoded_text": 0,
+    "complexity": {
+      "simple": 0,
+      "medium": 0,
+      "complex": 0,
+      "other": 0
+    },
+    "fn_top20": [],
+    "fn_total_calls": 0,
+    "cross_sheet_top10": []
+  },
+  "Project Level Workings": {
+    "cells": 405195,
+    "formulas": 401759,
+    "hardcoded_numeric": 42,
+    "hardcoded_text": 3394,
+    "complexity": {
+      "simple": 177363,
+      "medium": 188961,
+      "complex": 35435,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "SUM",
+        80488
+      ],
+      [
+        "IF",
+        73689
+      ],
+      [
+        "SUMIFS",
+        41259
+      ],
+      [
+        "MATCH",
+        40713
+      ],
+      [
+        "MAX",
+        32853
+      ],
+      [
+        "XLOOKUP",
+        29492
+      ],
+      [
+        "MIN",
+        28639
+      ],
+      [
+        "INDEX",
+        25504
+      ],
+      [
+        "IFERROR",
+        24439
+      ],
+      [
+        "AND",
+        20218
+      ],
+      [
+        "SINGLE",
+        10102
+      ],
+      [
+        "OR",
+        8827
+      ],
+      [
+        "MONTH",
+        8802
+      ],
+      [
+        "ROUND",
+        5896
+      ],
+      [
+        "YEAR",
+        2530
+      ],
+      [
+        "EOMONTH",
+        1693
+      ],
+      [
+        "NOT",
+        1685
+      ],
+      [
+        "MOD",
+        1265
+      ],
+      [
+        "SUMIF",
+        1263
+      ],
+      [
+        "SUMPRODUCT",
+        845
+      ]
+    ],
+    "fn_total_calls": 442758,
+    "cross_sheet_top10": [
+      [
+        "Time Inputs (A)",
+        64433
+      ],
+      [
+        "Time Inputs (M)",
+        13474
+      ],
+      [
+        "Project Level Workings",
+        12630
+      ],
+      [
+        "Project Info",
+        1183
+      ],
+      [
+        "Project Level Macro Paste",
+        842
+      ],
+      [
+        "Financing Inputs",
+        63
+      ],
+      [
+        "Sensis",
+        18
+      ],
+      [
+        "Country Inputs",
+        8
+      ],
+      [
+        "Time Inputs (Q)",
+        4
+      ],
+      [
+        "Checks",
+        2
+      ]
+    ]
+  },
+  "Pasted>": {
+    "cells": 0,
+    "formulas": 0,
+    "hardcoded_numeric": 0,
+    "hardcoded_text": 0,
+    "complexity": {
+      "simple": 0,
+      "medium": 0,
+      "complex": 0,
+      "other": 0
+    },
+    "fn_top20": [],
+    "fn_total_calls": 0,
+    "cross_sheet_top10": []
+  },
+  "Project Level Macro Paste": {
+    "cells": 170110,
+    "formulas": 639,
+    "hardcoded_numeric": 167562,
+    "hardcoded_text": 1909,
+    "complexity": {
+      "simple": 638,
+      "medium": 1,
+      "complex": 0,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "MATCH",
+        1
+      ]
+    ],
+    "fn_total_calls": 1,
+    "cross_sheet_top10": [
+      [
+        "Project Level Workings",
+        1
+      ]
+    ]
+  },
+  "Quarterly Output": {
+    "cells": 3122453,
+    "formulas": 180779,
+    "hardcoded_numeric": 2924999,
+    "hardcoded_text": 16675,
+    "complexity": {
+      "simple": 36267,
+      "medium": 144512,
+      "complex": 0,
+      "other": 0
+    },
+    "fn_top20": [
+      [
+        "INDEX",
+        107970
+      ],
+      [
+        "MATCH",
+        107970
+      ],
+      [
+        "IF",
+        35990
+      ],
+      [
+        "ISTEXT",
+        35990
+      ],
+      [
+        "EOMONTH",
+        276
+      ],
+      [
+        "YEAR",
+        276
+      ]
+    ],
+    "fn_total_calls": 288472,
+    "cross_sheet_top10": [
+      [
+        "Project Info",
+        107971
+      ],
+      [
+        "Quarterly Output",
+        35990
+      ]
+    ]
+  },
+  "END": {
+    "cells": 0,
+    "formulas": 0,
+    "hardcoded_numeric": 0,
+    "hardcoded_text": 0,
+    "complexity": {
+      "simple": 0,
+      "medium": 0,
+      "complex": 0,
+      "other": 0
+    },
+    "fn_top20": [],
+    "fn_total_calls": 0,
+    "cross_sheet_top10": []
+  }
+}

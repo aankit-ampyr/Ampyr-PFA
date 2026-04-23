@@ -1,0 +1,104 @@
+
+=== F1: Converted 2026-01-08 Project Parthenon - CIP_ASE_Internal_v18 - original file latest quarter.xlsm ===
+  Disclaimer                               cells=     25  f=      0  hc#=     3  s/m/c=0/0/0
+  Pltfrm Costs Devex Analysis              cells=   5010  f=   4959  hc#=     2  s/m/c=2814/2145/0
+  Sensis                                   cells=    252  f=     49  hc#=    26  s/m/c=48/1/0
+  Checks                                   cells=   1229  f=   1206  hc#=     1  s/m/c=244/242/720
+C:\repos\Ampyr-PFA\.venv\Lib\site-packages\openpyxl\worksheet\_reader.py:329: UserWarning: Data Validation extension is not supported and will be removed
+  warn(msg)
+  Dashboard                                cells=    458  f=    133  hc#=   138  s/m/c=102/31/0
+  BESS DCF Multiple Analysis               cells=    417  f=    382  hc#=     1  s/m/c=186/92/104
+  ProjectSummary                           cells=   2232  f=   1926  hc#=     1  s/m/c=377/163/1386
+  HoldCo_Summary                           cells=   3149  f=   2570  hc#=   314  s/m/c=1081/1489/0
+  Charts                                   cells= 308682  f= 304729  hc#=  1791  s/m/c=159414/141521/3794
+  HoldCo_Facility                          cells=  92873  f=  92387  hc#=    16  s/m/c=56134/21789/14464
+  HoldCo income                            cells= 155291  f= 155117  hc#=     6  s/m/c=27090/127307/720
+  HoldCo CFs & Valuation                   cells= 691605  f= 663939  hc#=   867  s/m/c=162720/318699/182520
+  Inputs>                                  cells=      0  f=      0  hc#=     0  s/m/c=0/0/0
+  Project Info                             cells=  46805  f=  19908  hc#= 18652  s/m/c=5186/7762/6960
+  Country Inputs                           cells=    483  f=     22  hc#=   253  s/m/c=22/0/0
+  Financing Inputs                         cells=    583  f=    105  hc#=   333  s/m/c=51/54/0
+  Time Inputs (A)                          cells=  32599  f=  19542  hc#= 12131  s/m/c=16593/2789/160
+  Time Inputs (M)                          cells= 700600  f= 602728  hc#= 94464  s/m/c=17193/352389/233146
+  Time Inputs (Q)                          cells=  12054  f=   8147  hc#=  3793  s/m/c=5206/2941/0
+  Workings>                                cells=      0  f=      0  hc#=     0  s/m/c=0/0/0
+  Project Level Workings                   cells= 405195  f= 401759  hc#=    42  s/m/c=177363/188961/35435
+  Pasted>                                  cells=      0  f=      0  hc#=     0  s/m/c=0/0/0
+  Project Level Macro Paste                cells= 170110  f=    639  hc#=167562  s/m/c=638/1/0
+  Quarterly Output                         cells=3122453  f= 180779  hc#=2924999  s/m/c=36267/144512/0
+  END                                      cells=      0  f=      0  hc#=     0  s/m/c=0/0/0
+  [wrote c:\repos\Ampyr-PFA\.claude\analysis_2026_04/03_sheet_breakdown_F1.json]
+
+=== F2: Converted FY27 Business Planv8 copy - file with GTC sheets added.xlsm ===
+  Instruction tab                          cells=     80  f=      0  hc#=     0  s/m/c=0/0/0
+  Summary sheet                            cells=   2260  f=   2199  hc#=     0  s/m/c=2022/177/0
+  PnL projection - aggregate               cells=   2248  f=   2018  hc#=     3  s/m/c=256/1762/0
+  FY26A-29F PL Breakdown                   cells=  15798  f=  14985  hc#=   109  s/m/c=14561/424/0
+  FY26B PL Mapping                         cells=    105  f=     31  hc#=    10  s/m/c=17/14/0
+  BS projection - aggregate                cells=   1256  f=   1127  hc#=     0  s/m/c=426/701/0
+  FY26A-29F BS Breakdown                   cells=   7760  f=   6867  hc#=    91  s/m/c=6829/38/0
+  FY26B BS Mapping                         cells=    104  f=     39  hc#=     8  s/m/c=27/12/0
+  CF Capital Strategy                      cells=   2131  f=   1903  hc#=     0  s/m/c=207/1696/0
+  CF Capital Strategy Breakdown            cells=   2104  f=   1459  hc#=   115  s/m/c=932/527/0
+  Q Rep (USD)                              cells=  11837  f=   4032  hc#=  5698  s/m/c=3440/592/0
+  Valuation (2)                            cells=    741  f=    394  hc#=   144  s/m/c=315/79/0
+  Cash Breakeven                           cells=    211  f=    146  hc#=    28  s/m/c=79/67/0
+  QRep(EUR)                                cells=   8845  f=   1867  hc#=  4607  s/m/c=1174/693/0
+  Disclaimer                               cells=     25  f=      0  hc#=     3  s/m/c=0/0/0
+  FX                                       cells=     12  f=      0  hc#=     5  s/m/c=0/0/0
+  Net income bridge                        cells=     65  f=     16  hc#=    13  s/m/c=14/2/0
+  Sensis                                   cells=    252  f=     49  hc#=    26  s/m/c=48/1/0
+  Valuation                                cells=    146  f=     65  hc#=    19  s/m/c=45/20/0
+  Checks                                   cells=    975  f=    961  hc#=     1  s/m/c=241/0/720
+  Log                                      cells=     16  f=      1  hc#=     4  s/m/c=0/1/0
+  Graphs                                   cells=    331  f=    187  hc#=    31  s/m/c=109/78/0
+  Tables                                   cells=    407  f=    209  hc#=    34  s/m/c=144/65/0
+  ProjectSummary                           cells=   3163  f=   2768  hc#=    27  s/m/c=375/1085/1308
+  Dashboard                                cells=    447  f=    113  hc#=   147  s/m/c=92/21/0
+  HoldCo_Summary                           cells=   2125  f=   1654  hc#=   316  s/m/c=662/992/0
+  BESS DCF Multiple Analysis               cells=    415  f=    380  hc#=     1  s/m/c=184/92/104
+  Charts                                   cells= 330312  f= 313239  hc#=  3722  s/m/c=164854/144591/3794
+  Project Info                             cells=  46588  f=  19666  hc#= 18658  s/m/c=5182/7644/6840
+  Asset workings                           cells=1192093  f=1191376  hc#=    49  s/m/c=47783/541941/601652
+  HoldCo CFs & Valuation                   cells= 692482  f= 639450  hc#=  1004  s/m/c=138123/318807/182520
+  HoldCo_Facility                          cells=  93185  f=  90855  hc#=   209  s/m/c=55006/21397/14452
+  Inputs>                                  cells=      0  f=      0  hc#=     0  s/m/c=0/0/0
+  HoldCo income                            cells= 155289  f= 155115  hc#=     6  s/m/c=27088/127307/720
+  Time Inputs (A)                          cells=  32480  f=  19419  hc#= 12133  s/m/c=16470/2789/160
+  Time Inputs (Q)                          cells=  17276  f=  11269  hc#=  5843  s/m/c=7273/3996/0
+  Country Inputs                           cells=    505  f=     35  hc#=   254  s/m/c=23/12/0
+  Financing Inputs                         cells=    581  f=    103  hc#=   333  s/m/c=49/54/0
+  Time Inputs (M)                          cells= 712978  f= 608928  hc#=100601  s/m/c=20303/355479/233146
+  Workings>                                cells=      0  f=      0  hc#=     0  s/m/c=0/0/0
+  Project Level Workings                   cells= 408583  f= 405137  hc#=    42  s/m/c=176946/191914/36277
+  Pasted>                                  cells=      0  f=      0  hc#=     0  s/m/c=0/0/0
+  Project Level Macro Paste                cells= 170110  f=    639  hc#=167562  s/m/c=638/1/0
+  Quarterly Output                         cells=3389645  f= 180779  hc#=3190851  s/m/c=36267/144512/0
+  END                                      cells=      0  f=      0  hc#=     0  s/m/c=0/0/0
+  [wrote c:\repos\Ampyr-PFA\.claude\analysis_2026_04/03_sheet_breakdown_F2.json]
+
+=== F3: converted Project Parthenon - FM - raw file previous quarter.xlsm ===
+  Disclaimer                               cells=     25  f=      0  hc#=     3  s/m/c=0/0/0
+  Sensis                                   cells=    251  f=     49  hc#=    26  s/m/c=48/1/0
+  Checks                                   cells=    975  f=    961  hc#=     1  s/m/c=241/0/720
+  Dashboard                                cells=    359  f=     74  hc#=   128  s/m/c=73/1/0
+  ProjectSummary                           cells=   2164  f=   1864  hc#=     1  s/m/c=441/232/1191
+  HoldCo_Facility                          cells=  90523  f=  90092  hc#=     7  s/m/c=54788/20852/14452
+  HoldCo_Summary                           cells=   1759  f=   1327  hc#=   291  s/m/c=792/535/0
+  Charts                                   cells= 308459  f= 304507  hc#=  1791  s/m/c=159403/141310/3794
+  HoldCo income                            cells= 155289  f= 155115  hc#=     6  s/m/c=27088/127307/720
+  HoldCo CFs & Valuation                   cells= 691483  f= 663943  hc#=  1291  s/m/c=137568/318295/208080
+  Inputs>                                  cells=      0  f=      0  hc#=     0  s/m/c=0/0/0
+  Project Info                             cells=  46516  f=  19794  hc#= 18563  s/m/c=5176/7778/6840
+  Country Inputs                           cells=    481  f=     20  hc#=   253  s/m/c=20/0/0
+  Financing Inputs                         cells=    581  f=    103  hc#=   333  s/m/c=49/54/0
+  Time Inputs (A)                          cells=  32439  f=  19417  hc#= 12096  s/m/c=16468/2789/160
+  Time Inputs (M)                          cells= 712979  f= 608921  hc#=100609  s/m/c=20295/355479/233147
+  Time Inputs (Q)                          cells=  31946  f=  25804  hc#=  5879  s/m/c=10056/15748/0
+  Workings>                                cells=      0  f=      0  hc#=     0  s/m/c=0/0/0
+  Project Level Workings                   cells= 405193  f= 401757  hc#=    42  s/m/c=177361/188961/35435
+  Pasted>                                  cells=      0  f=      0  hc#=     0  s/m/c=0/0/0
+  Project Level Macro Paste                cells= 170110  f=    639  hc#=167562  s/m/c=638/1/0
+  Quarterly Output                         cells=3290501  f= 180779  hc#=3092095  s/m/c=36267/144512/0
+  END                                      cells=      0  f=      0  hc#=     0  s/m/c=0/0/0
+  [wrote c:\repos\Ampyr-PFA\.claude\analysis_2026_04/03_sheet_breakdown_F3.json]

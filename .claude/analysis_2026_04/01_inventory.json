@@ -1,0 +1,674 @@
+{
+  "F1_ASE_Latest": {
+    "file": "Converted 2026-01-08 Project Parthenon - CIP_ASE_Internal_v18 - original file latest quarter.xlsm",
+    "size_mb": 46.17,
+    "n_sheets": 25,
+    "sheets": [
+      {
+        "name": "Disclaimer",
+        "state": "visible",
+        "max_row": 46,
+        "max_col": 6,
+        "dim": "A1:F46"
+      },
+      {
+        "name": "Pltfrm Costs Devex Analysis ",
+        "state": "visible",
+        "max_row": 42,
+        "max_col": 325,
+        "dim": "A1:LM42"
+      },
+      {
+        "name": "Sensis",
+        "state": "visible",
+        "max_row": 140,
+        "max_col": 56,
+        "dim": "A1:BD140"
+      },
+      {
+        "name": "Checks",
+        "state": "visible",
+        "max_row": 143,
+        "max_col": 382,
+        "dim": "A1:NR143"
+      },
+      {
+        "name": "Dashboard",
+        "state": "visible",
+        "max_row": 159,
+        "max_col": 380,
+        "dim": "A1:NP159"
+      },
+      {
+        "name": "BESS DCF Multiple Analysis",
+        "state": "visible",
+        "max_row": 196,
+        "max_col": 383,
+        "dim": "A1:NS196"
+      },
+      {
+        "name": "ProjectSummary",
+        "state": "visible",
+        "max_row": 94,
+        "max_col": 401,
+        "dim": "A1:OK94"
+      },
+      {
+        "name": "HoldCo_Summary",
+        "state": "visible",
+        "max_row": 269,
+        "max_col": 381,
+        "dim": "A1:NQ269"
+      },
+      {
+        "name": "Charts",
+        "state": "visible",
+        "max_row": 1668,
+        "max_col": 381,
+        "dim": "A1:NQ1668"
+      },
+      {
+        "name": "HoldCo_Facility",
+        "state": "visible",
+        "max_row": 1451,
+        "max_col": 380,
+        "dim": "A1:NP1451"
+      },
+      {
+        "name": "HoldCo income",
+        "state": "visible",
+        "max_row": 756,
+        "max_col": 380,
+        "dim": "A1:NP756"
+      },
+      {
+        "name": "HoldCo CFs & Valuation",
+        "state": "visible",
+        "max_row": 3373,
+        "max_col": 380,
+        "dim": "A1:NP3373"
+      },
+      {
+        "name": "Inputs>",
+        "state": "visible",
+        "max_row": 1,
+        "max_col": 1,
+        "dim": "A1:A1"
+      },
+      {
+        "name": "Project Info",
+        "state": "visible",
+        "max_row": 597,
+        "max_col": 233,
+        "dim": "A1:HY597"
+      },
+      {
+        "name": "Country Inputs",
+        "state": "visible",
+        "max_row": 133,
+        "max_col": 11,
+        "dim": "A1:K133"
+      },
+      {
+        "name": "Financing Inputs",
+        "state": "visible",
+        "max_row": 77,
+        "max_col": 325,
+        "dim": "A1:LM77"
+      },
+      {
+        "name": "Time Inputs (A)",
+        "state": "visible",
+        "max_row": 651,
+        "max_col": 325,
+        "dim": "A1:LM651"
+      },
+      {
+        "name": "Time Inputs (M)",
+        "state": "visible",
+        "max_row": 1581,
+        "max_col": 634,
+        "dim": "A1:XJ1581"
+      },
+      {
+        "name": "Time Inputs (Q)",
+        "state": "visible",
+        "max_row": 254,
+        "max_col": 336,
+        "dim": "A1:LX254"
+      },
+      {
+        "name": "Workings>",
+        "state": "visible",
+        "max_row": 1,
+        "max_col": 1,
+        "dim": "A1:A1"
+      },
+      {
+        "name": "Project Level Workings",
+        "state": "visible",
+        "max_row": 1597,
+        "max_col": 16384,
+        "dim": "A1:XFD1597"
+      },
+      {
+        "name": "Pasted>",
+        "state": "visible",
+        "max_row": 1,
+        "max_col": 1,
+        "dim": "A1:A1"
+      },
+      {
+        "name": "Project Level Macro Paste",
+        "state": "visible",
+        "max_row": 654,
+        "max_col": 424,
+        "dim": "A2:PH654"
+      },
+      {
+        "name": "Quarterly Output",
+        "state": "visible",
+        "max_row": 35999,
+        "max_col": 433,
+        "dim": "A1:PQ35999"
+      },
+      {
+        "name": "END",
+        "state": "visible",
+        "max_row": 1,
+        "max_col": 1,
+        "dim": "A1:A1"
+      }
+    ]
+  },
+  "F2_GTC_Enhanced": {
+    "file": "Converted FY27 Business Planv8 copy - file with GTC sheets added.xlsm",
+    "size_mb": 70.45,
+    "n_sheets": 45,
+    "sheets": [
+      {
+        "name": "Instruction tab",
+        "state": "visible",
+        "max_row": 68,
+        "max_col": 10,
+        "dim": "A2:J68"
+      },
+      {
+        "name": "Summary sheet",
+        "state": "hidden",
+        "max_row": 336,
+        "max_col": 19,
+        "dim": "A2:S336"
+      },
+      {
+        "name": "PnL projection - aggregate",
+        "state": "visible",
+        "max_row": 225,
+        "max_col": 20,
+        "dim": "A1:T225"
+      },
+      {
+        "name": "FY26A-29F PL Breakdown",
+        "state": "visible",
+        "max_row": 305,
+        "max_col": 136,
+        "dim": "A1:EF305"
+      },
+      {
+        "name": "FY26B PL Mapping",
+        "state": "visible",
+        "max_row": 73,
+        "max_col": 12,
+        "dim": "A1:L73"
+      },
+      {
+        "name": "BS projection - aggregate",
+        "state": "visible",
+        "max_row": 120,
+        "max_col": 20,
+        "dim": "A1:T120"
+      },
+      {
+        "name": "FY26A-29F BS Breakdown",
+        "state": "visible",
+        "max_row": 445,
+        "max_col": 55,
+        "dim": "B1:BC445"
+      },
+      {
+        "name": "FY26B BS Mapping",
+        "state": "visible",
+        "max_row": 66,
+        "max_col": 8,
+        "dim": "A1:H66"
+      },
+      {
+        "name": "CF Capital Strategy",
+        "state": "visible",
+        "max_row": 250,
+        "max_col": 66,
+        "dim": "A1:BN250"
+      },
+      {
+        "name": "CF Capital Strategy Breakdown",
+        "state": "visible",
+        "max_row": 255,
+        "max_col": 72,
+        "dim": "A1:BT255"
+      },
+      {
+        "name": "Q Rep (USD)",
+        "state": "hidden",
+        "max_row": 477,
+        "max_col": 89,
+        "dim": "A1:CK477"
+      },
+      {
+        "name": "Valuation (2)",
+        "state": "visible",
+        "max_row": 109,
+        "max_col": 23,
+        "dim": "A1:W109"
+      },
+      {
+        "name": "Cash Breakeven",
+        "state": "visible",
+        "max_row": 40,
+        "max_col": 13,
+        "dim": "A1:M40"
+      },
+      {
+        "name": "QRep(EUR)",
+        "state": "hidden",
+        "max_row": 477,
+        "max_col": 89,
+        "dim": "A1:CK477"
+      },
+      {
+        "name": "Disclaimer",
+        "state": "visible",
+        "max_row": 46,
+        "max_col": 6,
+        "dim": "A1:F46"
+      },
+      {
+        "name": "FX",
+        "state": "visible",
+        "max_row": 9,
+        "max_col": 3,
+        "dim": "B2:C9"
+      },
+      {
+        "name": "Net income bridge",
+        "state": "visible",
+        "max_row": 44,
+        "max_col": 17,
+        "dim": "A1:Q44"
+      },
+      {
+        "name": "Sensis",
+        "state": "visible",
+        "max_row": 140,
+        "max_col": 56,
+        "dim": "A1:BD140"
+      },
+      {
+        "name": "Valuation",
+        "state": "visible",
+        "max_row": 37,
+        "max_col": 21,
+        "dim": "A1:U37"
+      },
+      {
+        "name": "Checks",
+        "state": "visible",
+        "max_row": 135,
+        "max_col": 380,
+        "dim": "A1:NP135"
+      },
+      {
+        "name": "Log",
+        "state": "visible",
+        "max_row": 102,
+        "max_col": 37,
+        "dim": "A2:AK102"
+      },
+      {
+        "name": "Graphs",
+        "state": "visible",
+        "max_row": 194,
+        "max_col": 22,
+        "dim": "A2:V194"
+      },
+      {
+        "name": "Tables",
+        "state": "visible",
+        "max_row": 68,
+        "max_col": 18,
+        "dim": "B2:R68"
+      },
+      {
+        "name": "ProjectSummary",
+        "state": "visible",
+        "max_row": 97,
+        "max_col": 416,
+        "dim": "A1:OZ97"
+      },
+      {
+        "name": "Dashboard",
+        "state": "visible",
+        "max_row": 157,
+        "max_col": 380,
+        "dim": "A1:NP157"
+      },
+      {
+        "name": "HoldCo_Summary",
+        "state": "visible",
+        "max_row": 232,
+        "max_col": 383,
+        "dim": "A1:NS232"
+      },
+      {
+        "name": "BESS DCF Multiple Analysis",
+        "state": "visible",
+        "max_row": 196,
+        "max_col": 383,
+        "dim": "A1:NS196"
+      },
+      {
+        "name": "Charts",
+        "state": "visible",
+        "max_row": 1798,
+        "max_col": 384,
+        "dim": "A1:NT1798"
+      },
+      {
+        "name": "Project Info",
+        "state": "visible",
+        "max_row": 595,
+        "max_col": 233,
+        "dim": "A1:HY595"
+      },
+      {
+        "name": "Asset workings",
+        "state": "visible",
+        "max_row": 5981,
+        "max_col": 229,
+        "dim": "A1:HU5981"
+      },
+      {
+        "name": "HoldCo CFs & Valuation",
+        "state": "visible",
+        "max_row": 3379,
+        "max_col": 380,
+        "dim": "A1:NP3379"
+      },
+      {
+        "name": "HoldCo_Facility",
+        "state": "visible",
+        "max_row": 1452,
+        "max_col": 380,
+        "dim": "A1:NP1452"
+      },
+      {
+        "name": "Inputs>",
+        "state": "visible",
+        "max_row": 1,
+        "max_col": 1,
+        "dim": "A1:A1"
+      },
+      {
+        "name": "HoldCo income",
+        "state": "visible",
+        "max_row": 756,
+        "max_col": 380,
+        "dim": "A1:NP756"
+      },
+      {
+        "name": "Time Inputs (A)",
+        "state": "visible",
+        "max_row": 653,
+        "max_col": 325,
+        "dim": "A1:LM653"
+      },
+      {
+        "name": "Time Inputs (Q)",
+        "state": "visible",
+        "max_row": 254,
+        "max_col": 336,
+        "dim": "A1:LX254"
+      },
+      {
+        "name": "Country Inputs",
+        "state": "visible",
+        "max_row": 138,
+        "max_col": 11,
+        "dim": "A1:K138"
+      },
+      {
+        "name": "Financing Inputs",
+        "state": "visible",
+        "max_row": 77,
+        "max_col": 325,
+        "dim": "A1:LM77"
+      },
+      {
+        "name": "Time Inputs (M)",
+        "state": "visible",
+        "max_row": 1581,
+        "max_col": 634,
+        "dim": "A1:XJ1581"
+      },
+      {
+        "name": "Workings>",
+        "state": "visible",
+        "max_row": 1,
+        "max_col": 1,
+        "dim": "A1:A1"
+      },
+      {
+        "name": "Project Level Workings",
+        "state": "visible",
+        "max_row": 1609,
+        "max_col": 16384,
+        "dim": "A1:XFD1609"
+      },
+      {
+        "name": "Pasted>",
+        "state": "visible",
+        "max_row": 1,
+        "max_col": 1,
+        "dim": "A1:A1"
+      },
+      {
+        "name": "Project Level Macro Paste",
+        "state": "visible",
+        "max_row": 654,
+        "max_col": 424,
+        "dim": "A2:PH654"
+      },
+      {
+        "name": "Quarterly Output",
+        "state": "visible",
+        "max_row": 35999,
+        "max_col": 433,
+        "dim": "A1:PQ35999"
+      },
+      {
+        "name": "END",
+        "state": "visible",
+        "max_row": 1,
+        "max_col": 1,
+        "dim": "A1:A1"
+      }
+    ]
+  },
+  "F3_ASE_Previous": {
+    "file": "converted Project Parthenon - FM - raw file previous quarter.xlsm",
+    "size_mb": 47.83,
+    "n_sheets": 23,
+    "sheets": [
+      {
+        "name": "Disclaimer",
+        "state": "visible",
+        "max_row": 46,
+        "max_col": 6,
+        "dim": "A1:F46"
+      },
+      {
+        "name": "Sensis",
+        "state": "visible",
+        "max_row": 140,
+        "max_col": 56,
+        "dim": "A1:BD140"
+      },
+      {
+        "name": "Checks",
+        "state": "visible",
+        "max_row": 135,
+        "max_col": 380,
+        "dim": "A1:NP135"
+      },
+      {
+        "name": "Dashboard",
+        "state": "visible",
+        "max_row": 122,
+        "max_col": 380,
+        "dim": "A1:NP122"
+      },
+      {
+        "name": "ProjectSummary",
+        "state": "visible",
+        "max_row": 91,
+        "max_col": 401,
+        "dim": "A1:OK91"
+      },
+      {
+        "name": "HoldCo_Facility",
+        "state": "visible",
+        "max_row": 1433,
+        "max_col": 380,
+        "dim": "A1:NP1433"
+      },
+      {
+        "name": "HoldCo_Summary",
+        "state": "visible",
+        "max_row": 157,
+        "max_col": 380,
+        "dim": "A1:NP157"
+      },
+      {
+        "name": "Charts",
+        "state": "visible",
+        "max_row": 1667,
+        "max_col": 381,
+        "dim": "A1:NQ1667"
+      },
+      {
+        "name": "HoldCo income",
+        "state": "visible",
+        "max_row": 756,
+        "max_col": 380,
+        "dim": "A1:NP756"
+      },
+      {
+        "name": "HoldCo CFs & Valuation",
+        "state": "visible",
+        "max_row": 3255,
+        "max_col": 380,
+        "dim": "A1:NP3255"
+      },
+      {
+        "name": "Inputs>",
+        "state": "visible",
+        "max_row": 1,
+        "max_col": 1,
+        "dim": "A1:A1"
+      },
+      {
+        "name": "Project Info",
+        "state": "visible",
+        "max_row": 595,
+        "max_col": 233,
+        "dim": "A1:HY595"
+      },
+      {
+        "name": "Country Inputs",
+        "state": "visible",
+        "max_row": 133,
+        "max_col": 11,
+        "dim": "A1:K133"
+      },
+      {
+        "name": "Financing Inputs",
+        "state": "visible",
+        "max_row": 77,
+        "max_col": 325,
+        "dim": "A1:LM77"
+      },
+      {
+        "name": "Time Inputs (A)",
+        "state": "visible",
+        "max_row": 651,
+        "max_col": 325,
+        "dim": "A1:LM651"
+      },
+      {
+        "name": "Time Inputs (M)",
+        "state": "visible",
+        "max_row": 1581,
+        "max_col": 634,
+        "dim": "A1:XJ1581"
+      },
+      {
+        "name": "Time Inputs (Q)",
+        "state": "visible",
+        "max_row": 254,
+        "max_col": 336,
+        "dim": "A1:LX254"
+      },
+      {
+        "name": "Workings>",
+        "state": "visible",
+        "max_row": 1,
+        "max_col": 1,
+        "dim": "A1:A1"
+      },
+      {
+        "name": "Project Level Workings",
+        "state": "visible",
+        "max_row": 1597,
+        "max_col": 16384,
+        "dim": "A1:XFD1597"
+      },
+      {
+        "name": "Pasted>",
+        "state": "visible",
+        "max_row": 1,
+        "max_col": 1,
+        "dim": "A1:A1"
+      },
+      {
+        "name": "Project Level Macro Paste",
+        "state": "visible",
+        "max_row": 654,
+        "max_col": 424,
+        "dim": "A2:PH654"
+      },
+      {
+        "name": "Quarterly Output",
+        "state": "visible",
+        "max_row": 35999,
+        "max_col": 433,
+        "dim": "A1:PQ35999"
+      },
+      {
+        "name": "END",
+        "state": "visible",
+        "max_row": 1,
+        "max_col": 1,
+        "dim": "A1:A1"
+      }
+    ]
+  }
+}
