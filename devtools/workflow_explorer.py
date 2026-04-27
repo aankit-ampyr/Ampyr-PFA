@@ -1,23 +1,30 @@
 """
 Project Parthenon — ASE ↔ GTC Workflow Explorer
-Temporary Streamlit page to explore the financial model's functional structure.
+Internal Streamlit dashboard to explore the financial model's functional structure
+and track development timeline + status.
 
 Run:
-    streamlit run scratch/workflow_explorer.py
+    streamlit run devtools/workflow_explorer.py
 
-This is a discussion aid, not production UI. All numbers come from the deep
-analysis artefacts under .claude/analysis_2026_04/.
+This is a development tool, NOT production UI. It lives in `devtools/` precisely
+so it stays separable from the core app under `app/`. All numbers come from the
+deep analysis artefacts under .claude/analysis_2026_04/ and the timeline xlsx
+in docs/.
 """
 from __future__ import annotations
 import json
 from pathlib import Path
+from datetime import date
 
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
+from openpyxl import load_workbook
 
-ANALYSIS = Path(__file__).parent.parent / ".claude" / "analysis_2026_04"
+ROOT = Path(__file__).parent.parent
+ANALYSIS = ROOT / ".claude" / "analysis_2026_04"
+TIMELINE_XLSX = ROOT / "docs" / "Ampyr Financial Model Digitisation timeline.xlsx"
 
 st.set_page_config(
     page_title="Parthenon · ASE↔GTC Workflow",
@@ -30,6 +37,88 @@ st.set_page_config(
 @st.cache_data
 def load_json(p: Path) -> dict:
     return json.loads(p.read_text()) if p.exists() else {}
+
+
+@st.cache_data
+def load_timeline(xlsx_path: Path) -> dict:
+    """Parse the timeline xlsx into structured buckets. Stays in sync with create_timeline.py."""
+    if not xlsx_path.exists():
+        return {"meta": {}, "buckets": [], "buffer": None, "totals": {}, "notes": []}
+
+    wb = load_workbook(xlsx_path, data_only=True)
+    ws = wb.active
+    rows = [tuple(r) for r in ws.iter_rows(values_only=True)]
+
+    meta = {"title": rows[0][0] or "", "basis": rows[1][0] or ""}
+    buckets, current = [], None
+    buffer_row, totals, notes = None, {}, []
+    in_notes = False
+
+    for row in rows[3:]:
+        cells = [c for c in row if c is not None and str(c).strip()]
+        if not cells:
+            continue
+        first = str(row[0] or "")
+        if first.startswith("BUCKET"):
+            current = {"name": first, "items": [], "subtotal": None}
+            buckets.append(current)
+        elif first.startswith("BUFFER"):
+            current = None
+        elif first.startswith("Bucket") and "Subtotal" in first:
+            if current is not None:
+                current["subtotal"] = row[3]
+        elif first == "GRAND TOTAL":
+            totals["grand_total"] = row[3]
+        elif first.startswith("ESTIMATED DURATION"):
+            totals["duration"] = row[3]
+        elif first == "NOTES & ASSUMPTIONS" or first.startswith("v1.1 NOTES"):
+            in_notes = True
+            if first.startswith("v1.1"):
+                notes.append(first)
+        elif in_notes:
+            notes.append(first)
+        elif first == "" and row[1] and "Debugging" in str(row[1]):
+            buffer_row = {"item": row[1], "desc": row[2], "weeks": row[3]}
+        elif current is not None and row[0] not in (None, ""):
+            current["items"].append({
+                "num": row[0], "item": row[1] or "", "desc": row[2] or "", "weeks": row[3]
+            })
+
+    return {"meta": meta, "buckets": buckets, "buffer": buffer_row,
+            "totals": totals, "notes": notes}
+
+
+# Status overlay — hand-maintained until we have a DB. Keys match item numbers from timeline.
+# Status values: done | in_progress | pending | blocked
+STATUS = {
+    # Phase 0 prerequisites (done as part of scaffolding / re-analysis)
+    "P1": "pending", "P2": "pending", "P3": "pending", "P4": "pending", "P5": "pending",
+    # Bucket 1
+    1: "pending", 2: "pending", 3: "pending", 4: "pending", 5: "pending",
+    6: "pending", 7: "pending", 8: "pending", 9: "pending", 10: "pending",
+    11: "pending", 12: "pending", 13: "pending", 14: "pending",
+    # Bucket 2
+    15: "pending", 16: "pending", 17: "pending", 18: "pending", 19: "pending", 20: "pending",
+    # Bucket 3
+    21: "pending", 22: "pending", 23: "pending", 24: "pending", 25: "pending",
+    # Bucket 0B deep-dives
+    "G1": "pending", "G2": "pending", "G3": "pending", "G4": "pending",
+}
+
+# Hand-maintained recent updates — most-recent first.
+RECENT_UPDATES = [
+    ("2026-04-27", "Spec re-baseline",
+     "DEVELOPMENT_SPEC.md → v1.1. Merged 23-Apr deep-analysis findings: 915 PLW rows, 75 edge cases, "
+     "DSCR two-criteria, 15+ Sensis levers, GTC reshape interpretation. External SharePoint workbook "
+     "deps declared out of scope. Validation oracle empirically confirmed (PLW 64% / QO 62% cached). "
+     "Timeline regenerated to v1.1 (~30 weeks)."),
+    ("2026-04-23", "Deep Excel re-analysis checkpoint",
+     "Reference/2026-04-23_Excel_Deep_Analysis.md generated. Surfaced 11 corrections vs the original spec; "
+     "checkpoint also lists 7 deferred investigations (HoldCo trio, Time Inputs M, edge cases, etc.)."),
+    ("2026-03-14", "Phase 0 scaffolding complete",
+     "Python 3.12 venv, Postgres 16 docker-compose, Alembic init, app/{models,ingestion,engine,api,reports,ui}/ "
+     "skeleton, ruff config, .env.example. Project files reorganised."),
+]
 
 inv = load_json(ANALYSIS / "01_inventory.json")
 named = load_json(ANALYSIS / "02_named_ranges.json")
@@ -102,10 +191,188 @@ st.divider()
 
 # ---------- Tabs -----------------------------------------------------------
 
-tab_inputs, tab_calc, tab_outputs, tab_gtc, tab_quarter, tab_risks = st.tabs(
-    ["📥 Inputs", "⚙️ Calculation workflow", "📤 Outputs (F1)", "📊 GTC additions (F2)",
-     "🔄 Quarterly change profile", "⚠️ Risks & gotchas"]
+tab_status, tab_inputs, tab_calc, tab_outputs, tab_gtc, tab_quarter, tab_risks = st.tabs(
+    ["📅 Timeline & Status", "📥 Inputs", "⚙️ Calculation workflow", "📤 Outputs (F1)",
+     "📊 GTC additions (F2)", "🔄 Quarterly change profile", "⚠️ Risks & gotchas"]
 )
+
+# ==========================================================================
+# TIMELINE & STATUS
+# ==========================================================================
+with tab_status:
+    st.subheader("Project Parthenon — Development Timeline & Status")
+
+    timeline = load_timeline(TIMELINE_XLSX)
+
+    if not timeline["buckets"]:
+        st.error(f"Timeline file not found at `{TIMELINE_XLSX}`. "
+                 f"Regenerate via `python scripts/create_timeline.py`.")
+        st.stop()
+
+    st.caption(
+        f"Source: `{TIMELINE_XLSX.name}` (regenerated 2026-04-27, v1.1). "
+        f"Status overlay is hand-maintained in `devtools/workflow_explorer.py` (`STATUS` dict)."
+    )
+
+    # ---- Top-line status cards ----
+    today = date.today()
+    n_total = sum(len(b["items"]) for b in timeline["buckets"])
+    n_done = sum(1 for s in STATUS.values() if s == "done")
+    n_active = sum(1 for s in STATUS.values() if s == "in_progress")
+    n_pending = sum(1 for s in STATUS.values() if s == "pending")
+    n_blocked = sum(1 for s in STATUS.values() if s == "blocked")
+
+    c1, c2, c3, c4, c5 = st.columns(5)
+    c1.metric("Phase", "Phase 0 ✅ → Phase 1 prep")
+    c2.metric("Items done", f"{n_done} / {len(STATUS)}")
+    c3.metric("In progress", n_active)
+    c4.metric("Pending", n_pending)
+    c5.metric("Blocked", n_blocked, delta_color="inverse")
+
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Grand total effort", str(timeline["totals"].get("grand_total", "—")))
+    c2.metric("Estimated duration", str(timeline["totals"].get("duration", "—")))
+    c3.metric("Today", today.isoformat())
+
+    st.divider()
+
+    # ---- Recent updates ----
+    st.markdown("##### Recent updates")
+    for d, title, body in RECENT_UPDATES:
+        with st.container(border=True):
+            st.markdown(f"**{d} · {title}**")
+            st.caption(body)
+
+    st.divider()
+
+    # ---- Bucket-level rollup ----
+    st.markdown("##### Bucket rollup")
+
+    PILL = {
+        "done":        "✅ Done",
+        "in_progress": "🟡 In progress",
+        "pending":     "⚪ Pending",
+        "blocked":     "🔴 Blocked",
+    }
+
+    bucket_rows = []
+    for b in timeline["buckets"]:
+        statuses = [STATUS.get(it["num"], "pending") for it in b["items"]]
+        n = len(statuses)
+        done = sum(1 for s in statuses if s == "done")
+        active = sum(1 for s in statuses if s == "in_progress")
+        bucket_rows.append({
+            "Bucket": b["name"][:80],
+            "Items": n,
+            "Done": done,
+            "In progress": active,
+            "Pending": n - done - active,
+            "Effort (weeks)": b["subtotal"],
+            "Progress %": round(100 * done / n, 0) if n else 0,
+        })
+    if timeline["buffer"]:
+        bucket_rows.append({
+            "Bucket": "BUFFER · " + str(timeline["buffer"]["item"])[:60],
+            "Items": 1, "Done": 0, "In progress": 0, "Pending": 1,
+            "Effort (weeks)": timeline["buffer"]["weeks"], "Progress %": 0,
+        })
+    df_buckets = pd.DataFrame(bucket_rows)
+    st.dataframe(
+        df_buckets,
+        use_container_width=True,
+        hide_index=True,
+        column_config={
+            "Progress %": st.column_config.ProgressColumn(
+                "Progress %", min_value=0, max_value=100, format="%d%%"
+            ),
+            "Effort (weeks)": st.column_config.NumberColumn(format="%.2f w"),
+        },
+    )
+
+    # ---- Sequence Gantt ----
+    st.markdown("##### Bucket sequence (concurrent: 0B with 1)")
+    seq, cumulative = [], 0.0
+    for b in timeline["buckets"]:
+        wks = float(b["subtotal"] or 0)
+        if "0B" in b["name"]:
+            # concurrent with bucket 1 — anchor at bucket 1's start
+            b1 = next((s for s in seq if "BUCKET 1" in s["Bucket"]), None)
+            start = b1["Start"] if b1 else 0
+            seq.append({"Bucket": b["name"][:60], "Start": start, "End": start + wks, "Effort": wks, "Track": "concurrent"})
+        else:
+            seq.append({"Bucket": b["name"][:60], "Start": cumulative, "End": cumulative + wks, "Effort": wks, "Track": "main"})
+            cumulative += wks
+    if timeline["buffer"]:
+        wks = float(timeline["buffer"]["weeks"] or 0)
+        seq.append({"Bucket": "BUFFER", "Start": cumulative, "End": cumulative + wks, "Effort": wks, "Track": "main"})
+        cumulative += wks
+
+    df_seq = pd.DataFrame(seq)
+    fig = px.bar(df_seq, x="Effort", y="Bucket", base="Start", orientation="h",
+                 color="Track", text="Effort",
+                 title=f"Cumulative ~{cumulative:.1f} weeks main path",
+                 color_discrete_map={"main": "#1B4F72", "concurrent": "#76448A"})
+    fig.update_traces(texttemplate="%{text:.1f}w", textposition="inside")
+    fig.update_layout(yaxis={"categoryorder": "array", "categoryarray": list(reversed(df_seq["Bucket"]))},
+                      height=320, xaxis_title="Weeks from start")
+    st.plotly_chart(fig, use_container_width=True)
+
+    st.divider()
+
+    # ---- Per-bucket detail with status pills ----
+    st.markdown("##### Item-level detail")
+    bucket_picker = st.selectbox(
+        "Pick a bucket",
+        options=list(range(len(timeline["buckets"]))),
+        format_func=lambda i: timeline["buckets"][i]["name"][:90],
+    )
+    b = timeline["buckets"][bucket_picker]
+    item_rows = []
+    for it in b["items"]:
+        status = STATUS.get(it["num"], "pending")
+        item_rows.append({
+            "#": str(it["num"]),
+            "Status": PILL.get(status, status),
+            "Item": it["item"],
+            "Effort": it["weeks"],
+            "Description": it["desc"],
+        })
+    st.dataframe(
+        pd.DataFrame(item_rows),
+        use_container_width=True, hide_index=True,
+        column_config={
+            "Effort": st.column_config.NumberColumn("Weeks", format="%.2f"),
+            "Description": st.column_config.TextColumn("Description", width="large"),
+        },
+    )
+
+    st.divider()
+
+    # ---- Deferred investigation gates (DEVELOPMENT_SPEC §17) ----
+    st.markdown("##### Deferred investigation gates (DEVELOPMENT_SPEC §17)")
+    st.caption("Gates that block specific downstream work items. Source: spec §17.")
+    GATES = [
+        ("Per-asset parameter inventory", "1 day", "Bucket 2 #15, #16", "Pending"),
+        ("78-asset list by country/tech", "0.25 day", "Bucket 2 #15", "Pending"),
+        ("Time Inputs (M) disagg mechanic", "2-3 days", "Bucket 1 #4 (Revenue)", "Pending"),
+        ("HoldCo CFs & Valuation", "3-4 days", "Bucket 1 #11 (IRR)", "Pending"),
+        ("HoldCo_Facility", "1-2 days", "Bucket 1 #8 (Senior Debt)", "Pending"),
+        ("HoldCo income", "1 day", "Bucket 1 #11 (IRR)", "Pending"),
+        ("184 changed PLW rows (F3 vs F1)", "0.5 day", "Translator (#1)", "Pending"),
+        ("75 PLW edge-case rows", "1 day", "Translator (#1)", "Pending"),
+        ("Charts sheet", "—", "None — staging only", "🛑 Deferred indefinitely"),
+        ("Excel cached-value validation oracle", "—", "All engine work", "✅ Closed (2026-04-27)"),
+        ("External SharePoint workbooks", "—", "Ingestion", "✅ Closed — out of scope"),
+        ("ProjectActiveFlag vs ProjectconsolidateFlag", "—", "DSCR + Sensitivity blocks", "Open — inspect at impl time"),
+    ]
+    st.dataframe(pd.DataFrame(GATES, columns=["Investigation", "Effort", "Gates", "Status"]),
+                 use_container_width=True, hide_index=True)
+
+    # ---- Notes ----
+    if timeline["notes"]:
+        with st.expander("📝 Notes & assumptions (from timeline xlsx)"):
+            for n in timeline["notes"]:
+                st.markdown(f"- {n}")
 
 # ==========================================================================
 # INPUTS
@@ -692,5 +959,5 @@ st.divider()
 st.caption(
     "This app reads live from `.claude/analysis_2026_04/`. "
     "Re-run the analysis scripts there to refresh. "
-    "Not part of the eventual product UI — this is a scratch-pad for discussion."
+    "Not part of the eventual product UI — this is a development tool."
 )

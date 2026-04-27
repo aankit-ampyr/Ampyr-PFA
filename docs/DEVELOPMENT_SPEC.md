@@ -1,20 +1,29 @@
 # Project Parthenon -- Development Specification
 
-> **Version:** 1.0 | **Date:** March 2026 | **Author:** GTC Product & Technology
-> **Status:** Pre-Development | **Classification:** Internal / Confidential
+> **Version:** 1.1 | **Date:** April 2026 | **Author:** GTC Product & Technology
+> **Status:** Phase 0 Complete · Phase 1 Pending | **Classification:** Internal / Confidential
+>
+> **Change log v1.1 (2026-04-27):** Reconciled with deep re-analysis dated 2026-04-23
+> ([Reference/2026-04-23_Excel_Deep_Analysis.md](../Reference/2026-04-23_Excel_Deep_Analysis.md)).
+> Updated formula counts, edge-case count, time-axis column range, DSCR convergence
+> criteria, scenario lever inventory, GTC reshape interpretation, validation-oracle
+> confirmation. External workbook dependencies declared **out of scope** — values are
+> snapshot-as-hardcoded.
 
 ---
 
 ## 1. Executive Summary
 
-Project Parthenon replaces a 2-3 hour Excel-based scenario/sensitivity analysis workflow with a Python web application. The core financial model (.xlsb, ~34MB, owned by ASE) calculates 170 metrics across 120 asset slots (78 real assets) over a 35-year monthly horizon. The application will replicate the Excel calculation engine in Python, enable instant scenario analysis, and handle quarterly model updates automatically.
+Project Parthenon replaces a 2-3 hour Excel-based scenario/sensitivity analysis workflow with a Python web application. The core financial model (.xlsb, 46.2 MB, owned by ASE) calculates 170 metrics across 120 asset slots (78 real assets) over a 35-year monthly horizon. The application will replicate the Excel calculation engine in Python, enable instant scenario analysis, and handle quarterly model updates automatically.
 
-**Key numbers from deep analysis:**
-- 877 formula templates in the calculation engine
-- 26 unique Excel functions to translate
-- 98.5% formula reuse across time periods (only 13 edge-case rows)
-- 421 time period columns (monthly), single-asset-at-a-time model
-- Python engine will vectorize across all 78 assets simultaneously
+**Key numbers (re-confirmed against 23-Apr-2026 deep re-analysis):**
+- **915** rows with time-axis formulas in PLW (was 877 in v1.0)
+- **75 edge-case rows** with formulas that differ across time columns (was 13 in v1.0)
+- **876 rows span the full 421 time cols**, 39 rows are partial-span
+- **26 unique Excel functions** (confirmed)
+- **421 time period columns** spanning **cols AB (28) → QF (448)** (was incorrectly stated as M–PQ in v1.0)
+- Single-asset-at-a-time model in Excel; Python engine vectorizes across all 78 assets
+- **Validation oracle confirmed:** F1 PLW deep-region cells are 64% cached, Quarterly Output 62% cached. `data_only=True` returns usable values without manual recalc.
 
 ---
 
@@ -118,9 +127,19 @@ ASE collects changes from BD/Investment/Debt teams
 
 | File | Size | Sheets | Role |
 |------|------|--------|------|
-| F1: Latest ASE Original (.xlsm) | 46.2 MB | 25 | **Primary** -- calc engine source, formula extraction |
+| F1: Latest ASE Original (.xlsm) | 46.2 MB | **25** (was 23 in v1.0) | **Primary** -- calc engine source, formula extraction |
 | F2: GTC Enhanced (.xlsm) | 70.5 MB | 45 | Reporting templates (21 GTC sheets added) |
 | F3: Previous Quarter (.xlsm) | 47.8 MB | 23 | Diff testing only |
+
+**External workbook links (F1 only):** F1 references 4 external SharePoint workbooks
+(Project Canopy v14/v24/v30, CIP v7 Capacity Analysis). **Decision: out of scope.**
+Ingestion pipeline must snapshot externally-resolved cached values as hardcoded inputs
+and warn if the link target's cache is stale; the external files themselves are not ingested.
+
+**Sheets new in F1 vs F3:** `Pltfrm Costs Devex Analysis`, `BESS DCF Multiple Analysis`.
+
+**Hidden sheets in F2:** Summary sheet, Q Rep (USD), QRep(EUR) — must still be ingested
+(content lives behind `sheet_state="hidden"`).
 
 ### 4.2 Asset Portfolio
 
@@ -151,55 +170,78 @@ ASE collects changes from BD/Investment/Debt teams
 
 The PLW sheet does NOT calculate all assets simultaneously. It is a **template-based model**:
 
-- **Columns M-PQ (421 cols)** = monthly time periods for ONE asset
+- **Columns AB-QF (421 cols, indices 28-448)** = monthly time periods for ONE asset
 - **Row 15** (`Project_View`) = INDEX/MATCH to select the active asset
 - **VBA macro** (Consolidation.bas) loops through all assets: sets `Project_View`, triggers recalc, pastes results to Quarterly Output
 - This sequential loop is WHY it takes 2-3 hours
 
-**Implication for Python engine:** We translate 877 formula templates ONCE, then vectorize execution across all 78 assets as a `(78 x 421)` NumPy array. What takes Excel 2-3 hours becomes ~2-5 seconds.
+**Implication for Python engine:** We translate 915 formula rows ONCE, then vectorize execution across all 78 assets as a `(78 x 421)` NumPy array. What takes Excel 2-3 hours becomes ~2-5 seconds.
+
+> ⚠ **75 edge-case rows** (not 13) have formulas that differ across time columns.
+> A "translate once, broadcast 421×" approach mistranslates these. Translator framework
+> must support per-column overrides keyed by row × column. See §5.7.
 
 ### 5.2 Formula Statistics
 
 | Metric | Value |
 |--------|-------|
-| Total formula rows (Period 1) | 877 |
-| Simple (basic arithmetic) | 381 (43.4%) |
-| Medium (1-2 functions) | 265 (30.2%) |
-| Complex (nested IF/INDEX/MATCH) | 170 (19.4%) |
-| Cross-sheet references | 61 (7.0%) |
-| Formula reuse across time periods | 98.5% identical |
-| Edge-case rows (unique logic) | 13 |
+| Rows with time-axis formulas | **915** |
+| Rows spanning full 421 time cols | **876** |
+| Rows with partial span | **39** |
+| **Edge-case rows (formula differs across cols)** | **75** |
+| Time-axis column range | **AB (28) → QF (448)** |
 | Unique Excel functions used | 26 |
+| Cross-sheet references from PLW | **64,413** to `Time Inputs (A)`, 13,472 to `Time Inputs (M)`, 12,630 self-ref, 842 to `Project Info` |
+
+**True formula scale (cell counts, not template counts):**
+
+| Sheet | F1 formula cells |
+|---|---:|
+| HoldCo CFs & Valuation | 663,939 |
+| Time Inputs (M) | 602,728 |
+| Project Level Workings | 401,759 |
+| Charts | 304,729 |
+| Quarterly Output | 180,779 (formula) + 2,924,999 (hardcoded paste target) |
+| HoldCo income | 155,117 |
+| HoldCo_Facility | 92,387 |
+
+The "877 formulas" in v1.0 was *distinct rows in Period 1 of PLW*. Real cell counts are 1,000× higher (e.g. SUM has 79,957 calls, not 160). **Vectorisation payoff is therefore much larger than v1.0 communicated.**
 
 ### 5.3 Functions to Implement in Python
 
-| Function | Count | Python Equivalent |
-|----------|:-----:|-------------------|
-| SUM | 160 | `np.sum()` |
-| IF | 123 | `np.where()` |
-| SUMIFS | 81 | Filtered `np.sum()` with conditions |
-| MAX | 75 | `np.maximum()` |
-| MIN | 62 | `np.minimum()` |
-| INDEX | 60 | Array indexing |
-| MATCH | 60 | `np.searchsorted()` or `np.argwhere()` |
-| INPUTS (custom) | 58 | Named range lookup helper |
-| IFERROR | 57 | `try/except` or `np.nan_to_num()` |
-| XLOOKUP | 50 | Array indexing with search |
-| AND | 41 | `np.logical_and()` |
-| SINGLE | 22 | Identity (Excel 365 implicit intersection) |
-| OR | 12 | `np.logical_or()` |
-| ROUND | 10 | `np.round()` |
-| MONTH/YEAR | 10 | `pd.Timestamp` properties |
-| EOMONTH | 3 | `pd.offsets.MonthEnd` |
-| MOD | 3 | `np.mod()` |
-| SUMIF | 3 | Filtered sum |
-| YEARFRAC | 1 | Day-count calculation |
-| SUMPRODUCT | 1 | `np.dot()` |
-| OFFSET | 1 | Dynamic range indexing |
-| LOOKUP | 1 | `np.searchsorted()` |
-| ABS | 1 | `np.abs()` |
-| ROUNDUP | 1 | `np.ceil()` with scaling |
-| NOT | 4 | `np.logical_not()` |
+Counts below are **real cell-call counts** across PLW's time-axis region (cols AB–QF),
+not template counts. Source: `.claude/analysis_2026_04/04_plw_fns_crosssheet.json`.
+
+| Function | Calls | Python Equivalent |
+|----------|------:|-------------------|
+| SUM | 79,957 | `np.sum()` |
+| IF | 73,649 | `np.where()` |
+| SUMIFS | 41,257 | Filtered `np.sum()` with conditions |
+| MATCH | 40,416 | `np.searchsorted()` or `np.argwhere()` |
+| MAX | 32,839 | `np.maximum()` |
+| XLOOKUP | 29,470 | Array indexing with search |
+| MIN | 28,626 | `np.minimum()` |
+| INDEX | 25,260 | Array indexing |
+| IFERROR | 24,417 | `np.nan_to_num()` / masked ops |
+| AND | 20,206 | `np.logical_and()` |
+| SINGLE | 10,102 | Identity (Excel 365 implicit intersection) |
+| OR | 8,819 | `np.logical_or()` |
+| MONTH | 8,799 | `pd.Timestamp.month` |
+| ROUND | 5,894 | `np.round()` |
+| YEAR | 2,526 | `pd.Timestamp.year` |
+| EOMONTH | 1,684 | `pd.offsets.MonthEnd` |
+| NOT | 1,684 | `np.logical_not()` |
+| MOD | 1,263 | `np.mod()` |
+| SUMIF | 1,263 | Filtered sum |
+| SUMPRODUCT | 841 | `np.dot()` |
+| ROUNDUP | 421 | `np.ceil()` with scaling |
+| YEARFRAC | 421 | Day-count calculation |
+| LOOKUP | 421 | `np.searchsorted()` |
+| ABS | 421 | `np.abs()` |
+| OFFSET | 421 | Dynamic range indexing (1 template × 421 cols) |
+| INPUTS (custom) | n/a | Named-range lookup helper (per-template, not per-cell) |
+
+26 unique functions total — confirmed unchanged.
 
 ### 5.4 Calculation Block Map
 
@@ -240,12 +282,39 @@ Flags/Timings --> Production --> Revenue --> OpEx --> EBITDA
 
 ### 5.6 Cross-Sheet Dependencies (PLW)
 
-PLW formulas reference these sheets:
-- `Time Inputs (A)` -- 46 cross-sheet formulas (inflation indices, pricing curves via XLOOKUP)
-- `Project Info` -- 10 cross-sheet formulas (asset parameters via INDEX/MATCH)
-- `Country Inputs` -- 3 cross-sheet formulas (tax rates, regulatory params)
-- `Sensis` -- 2 cross-sheet formulas (scenario lever values)
-- `Dashboard` -- implicit references via named ranges
+Real cross-sheet reference counts (from PLW formulas, full time-axis region):
+
+| Source sheet | Refs from PLW |
+|---|---:|
+| `Time Inputs (A)` | **64,413** |
+| `Time Inputs (M)` | 13,472 |
+| PLW (self-ref) | 12,630 |
+| `Project Info` | 842 |
+| `Project Level Macro Paste` | 842 |
+| `Country Inputs` | (low) — tax rates, regulatory params |
+| `Sensis` | (low) — scenario lever values |
+
+→ `Time Inputs (A)` is **~5× more load-bearing** than `Time Inputs (M)` for PLW.
+Prioritise it in the ingestion pipeline.
+
+### 5.7 Edge-case rows (75)
+
+The 75 PLW rows whose formula text differs across the 421 time columns require
+per-column handling. Categories include: COD-anchored period flags, partial-span
+rows (39), terminal-period adjustments, and BESS-repower discontinuities. Full
+list: `.claude/analysis_2026_04/04_plw_summary.json` → `edge_case_rows`.
+
+Translator design: the per-block module declares a default (broadcast) translation
+and a dict of `{column_index: override_translation}` for affected rows. Engine
+applies the override map per-asset at execution time.
+
+### 5.8 PLW formula churn between quarters
+
+184 of 1,597 PLW formula rows (**11.5%**) changed between F3 and F1, concentrated
+in rows 3, 17–22 (header/flags), 139–141, 190–210 (flags & timing), and 242–327
+(production + early revenue). **Formulas are not frozen between releases** — the
+translator must be re-runnable each quarter and produce a formula-delta report
+against the previous baseline so affected blocks can be re-validated.
 
 ---
 
@@ -276,11 +345,20 @@ This is the macro that takes 2-3 hours. Our Python engine replaces this entirely
    - Copies `Use_live` values to `Use_paste` (offset by project number)
    - Copies `d_service_live` to `d_service_paste`
    - Triggers `Calculate`
-   - Repeats until `debt_delta < 0.2` AND `Use_delta < 0.2`
+   - Repeats while `debt_delta > 0.2` **OR** `Use_delta > 0.2`
 3. Saves `SeniorDebtOptimalValue`
 4. Sets `Sizing_Active = 0`
 
-**Key insight:** This is a **simple fixed-point iteration**, NOT Newton-Raphson. The convergence criterion is `delta < 0.2`, which is relatively loose. Python implementation is straightforward: iterate until convergence, typically 3-8 iterations per asset.
+**Key insight:** This is a **simple fixed-point iteration**, NOT Newton-Raphson.
+**TWO convergence criteria — both must pass:** `debt_delta < 0.2` AND `Use_delta < 0.2`.
+v1.0 of this spec mentioned only one criterion; the VBA actually checks both.
+There is **no max-iteration cap** in the VBA — the Python port should add one
+(e.g. `max_iter=50`) and emit a hard error on non-convergence to avoid edge-case
+infinite loops. Typical convergence is 3-8 iterations per asset.
+
+**⚠ Subtle bug risk:** `PlatformConsolidation` checks `projectactiveflag(i) = "True"`
+(string comparison) while `Sens_platformconsol` uses `= True` (boolean comparison).
+Different semantics — the Python port must replicate exactly to match Excel outputs.
 
 ### 6.3 Module1.bas -- Sensitivity Macro
 
@@ -385,15 +463,22 @@ GTC Layer:
 ### 9.1 Sensis Sheet Structure
 
 - **24 scenario slots** (columns L-AJ, rows 11-12 for names/IDs)
-- **6 scenario levers:**
-  1. Devex adjustment (%)
-  2. Capex adjustment (%)
-  3. Opex adjustment (%)
-  4. Production adjustment (%)
-  5. Revenue/pricing adjustment (%)
-  6. Financing terms adjustment (%)
+- **15+ scenario levers across 4 sections** (v1.0 said 6 — incorrect):
+
+| Section | Rows | Levers |
+|---|---|---|
+| Operations | 15-19 | Devex %, Capex %, Opex %, O&M % |
+| Production | 21-25 | Net production %, Yield (P50/P90 selector), Curtailment %, Quarterly generation toggle (Annual/Quarterly) |
+| Uncontracted revenues | 27-35 | Sensitivity price curve flag, Price curve selector (Low/Base/High), Indexed price curve toggle, Merchant power prices adj, Breakeven power price (UK Solar / DE Solar / NL Solar) |
+| Contracted revenues | 37+ | PPA on, Contracted share %, Contracted offtake prices |
+
+Lever **types are mixed** (boolean, enum, percentage). The scenario_overrides table
+must carry a `lever_type` discriminator (see §10).
+
 - `Live_case` named range selects the active scenario (1-24)
 - Lever values are read by PLW formulas via cross-sheet references to Sensis
+- **Stable between quarters:** F3→F1 only changed 2 trivial cells in Sensis. Scenario
+  engine layout is effectively frozen.
 
 ### 9.2 How Scenarios Work (from VBA)
 
@@ -499,11 +584,15 @@ CREATE TABLE scenario_overrides (
     id              SERIAL PRIMARY KEY,
     scenario_id     INTEGER REFERENCES scenarios(id),
     lever_name      VARCHAR(100),       -- 'production_adj', 'opex_adj', etc.
-    lever_value     DECIMAL(10,6),      -- e.g., -0.05 for -5%
-    lever_type      VARCHAR(50),        -- 'percentage', 'absolute'
+    lever_value_num DECIMAL(20,8),      -- numeric value (when lever_type in 'percentage','absolute')
+    lever_value_text VARCHAR(100),      -- enum value (e.g., 'P50','P90','Low','Base','High')
+    lever_value_bool BOOLEAN,           -- boolean flag (e.g., PPA on, indexed price curve)
+    lever_type      VARCHAR(50),        -- 'percentage','absolute','enum','boolean'
     asset_ids       INTEGER[],          -- NULL = all assets
-    target_block    VARCHAR(100)        -- 'Revenue', 'Production', etc.
+    target_block    VARCHAR(100)        -- 'Revenue','Production', etc.
 );
+-- lever_type discriminator added in v1.1 — Sensis carries 15+ levers of mixed type
+-- (boolean / enum / percentage), not just numeric percentages.
 ```
 
 ---
@@ -537,6 +626,45 @@ The `STRUCTURAL_MAP.md` (1,998 lines) documents every row label, section boundar
 - Identify renamed sections
 - Flag structural drift (new calc blocks, removed blocks)
 - Map formula changes to affected calc engine modules
+
+**Row-shift alignment, not equality.** F1 shifted Project Info rows by +2 vs F3 — 13
+named ranges (`modelStartDate`, `months`, `mths_per`, `round`, `outputSheetName`,
+`PPA_type`, `LL_revenue`, `P50_P90`, etc.) all moved by exactly 2 rows. The structural
+fingerprint comparator must align by section label and named-range identity, then
+detect shift offsets — equality on row numbers will produce false positives every
+quarter.
+
+### 11.3 Empirical churn observed (F3 → F1)
+
+| Sheet | Cells scanned | Changed | % |
+|---|---:|---:|---:|
+| Project Info | 138,635 | 50,330 | **36.3%** |
+| Country Inputs | 1,463 | 2 | 0.14% |
+| Financing Inputs | 25,025 | 29 | 0.12% (all date shifts of exactly +2 years) |
+| Time Inputs (A) | 211,575 | 1,129 | 0.53% |
+| **Time Inputs (Q)** | 85,344 | **35,955** | **42.1%** (entire "Existing Financing" section rebuilt) |
+| Sensis | 7,840 | 2 | 0.03% |
+| **PLW formula rows** | 1,597 | **184** | **11.5%** |
+
+Project Info churn = asset renames (DE: Arendsee/Dalum cluster replacing
+Adamshoffnung/Parchim/Bückwitz/Dalum), UK typo fix (`Whitney` → `Witney`),
+placeholders becoming real assets (Jerriestown, Harker 2, North Newton Phase 2),
+3 tech-type flips Solar→Solar+BESS, 6 active-flag flips False→True, 2 True→False.
+
+### 11.4 Robustness rules for ingestion
+
+1. **Hidden rows still hold data.** `Time Inputs (A)` has 448 hidden rows (69%);
+   `HoldCo income` has 609 (80%). Read regardless of `sheet_state`.
+2. **Live `#REF!` errors exist** in F2 (`PnL projection - aggregate`: 10,
+   `Summary sheet`: 30). Log them, do not silently coerce to zero.
+3. **Named-range noise:** F2 carries ~490 garbage names from add-ins (Capital IQ
+   `IQ_*`, Bloomberg, Smartview `AS2*`, Access `BNE_*`). Filter at ingestion to
+   only those referencing ASE sheets.
+4. **Data validations + conditional formatting** carry input-integrity rules
+   (`Project Info` has 15 DV + 52 CF rules). Replicate as Pydantic validators.
+5. **External workbook references in F1** (Project Canopy v14/v24/v30, CIP v7
+   Capacity Analysis): out of scope. Snapshot externally-resolved cached values
+   as inline hardcoded inputs; warn if the cached value is `#REF!` or stale.
 
 ---
 
@@ -615,6 +743,13 @@ For each calc engine block, after Python implementation:
 4. **Divergence target:** < 0.01% for all metrics
 5. Investigate and fix any divergence > 0.001%
 
+**Validation oracle confirmed available** (probed 2026-04-27 via
+[devtools/oracle_probe.py](../devtools/oracle_probe.py)). F1 PLW deep-region
+(rows 250-260, cols AB-AZ) returns 64% populated cells via `data_only=True`;
+Quarterly Output returns 62%. Both intermediate (PLW) and end-state
+(Quarterly Output) values are usable as oracles — no manual `F9-and-save`
+prerequisite. Block-level unit tests against PLW intermediates remain viable.
+
 ### 13.2 Full Model Validation
 
 Once all blocks are complete:
@@ -639,12 +774,17 @@ Once all blocks are complete:
 
 | Risk | Impact | Likelihood | Mitigation |
 |------|--------|------------|------------|
-| Revenue engine complexity (200 formula rows, country-specific) | High | Medium | Start Revenue block early; get Finance SME dedicated time for DE/UK/NL contract logic review |
-| DSCR solver convergence edge cases | Medium | Low | VBA shows simple fixed-point iteration with loose tolerance (0.2); replicate exact same approach |
+| Revenue engine complexity (200 formula rows, country-specific DE/UK/NL) | High | Medium | Start Revenue block early; Finance SME for DE/UK/NL contract logic review |
+| **75 PLW edge-case rows mistranslated by broadcast** (revised up from 13) | High | Medium-High | Translator framework supports per-column override map; explicit test for every edge-case row |
+| DSCR solver convergence edge cases (TWO criteria, no VBA cap) | Medium | Low-Medium | Add `max_iter` cap with hard error; verify both `debt_delta` AND `Use_delta < 0.2` |
 | Formula translation errors (rounding, date boundaries) | Medium | Medium | Automated validation suite comparing every cell against Excel; fix divergences iteratively |
 | Finance team SME availability | High | Medium | Schedule weekly 30-min validation sessions; prepare specific questions in advance |
-| Quarterly file structure changes | Medium | Low | Structural fingerprint comparison engine detects changes; alerts for manual review |
+| **Quarterly PLW formula churn** (184 rows changed F3→F1) | Medium | High | Translator re-runnable each quarter + formula-delta report; affected blocks re-validated |
+| Quarterly structural drift (row shifts, renamed sections) | Medium | Medium | Fingerprint comparator aligns by section label / named-range identity, not row number |
+| HoldCo CFs / Time Inputs (M) still black-boxed | Medium | Medium | Investigation gated before respective blocks (see §17) |
+| External SharePoint workbooks unavailable | Low | Low | Declared out of scope (§4.1, §11.4) — values snapshot inline at ingestion |
 | NumPy vectorization edge cases | Low | Low | Fallback to per-asset iteration for any blocks that resist vectorization |
+| Live `#REF!` errors propagate as zeros | Medium | Low | Ingestion logs `#REF!` cells, refuses to silently coerce |
 
 ---
 
@@ -652,12 +792,14 @@ Once all blocks are complete:
 
 | Document | Location | Contents |
 |----------|----------|----------|
-| Structural Map | `Ref Docs/STRUCTURAL_MAP.md` | Complete row-level blueprint of all 45 sheets (1,998 lines) |
-| PLW Formula Analysis | `Ref Docs/analysis_plw_formulas.txt` | All 877 formula templates, complexity classification, reuse analysis (6,454 lines) |
-| GTC & Input Analysis | `Ref Docs/analysis_gtc_inputs.txt` | Formula counts, cross-sheet dependencies, structural similarity |
-| VBA Macros | `Ref Docs/Macros/` | 8 exported modules (Consolidation, DebtSizing, Sensitivity, etc.) |
-| Development Timeline | `Ref Docs/Project_Parthenon_Timeline.xlsx` | 25 work items, 3 buckets, ~28.5 weeks at 25 hrs/week |
-| Named Ranges | `Ref Docs/STRUCTURAL_MAP.md` Section 2 | 67 relevant named ranges with references and purposes |
+| **Deep Re-analysis Checkpoint (2026-04-23)** | [Reference/2026-04-23_Excel_Deep_Analysis.md](../Reference/2026-04-23_Excel_Deep_Analysis.md) | **Authoritative source for v1.1 numbers.** Re-baselined formula counts, edge cases, churn metrics |
+| Raw analysis artefacts | `.claude/analysis_2026_04/*.json` | Per-sheet breakdowns, PLW row inventory, named ranges, GTC dependency matrix |
+| Structural Map | `docs/STRUCTURAL_MAP.md` | Complete row-level blueprint of all 45 sheets (1,998 lines) |
+| PLW Formula Analysis | `docs/analysis_plw_formulas.txt` | PLW formula templates analysis (6,454 lines) — superseded for counts by §5 above |
+| GTC & Input Analysis | `docs/analysis_gtc_inputs.txt` | Formula counts, cross-sheet dependencies, structural similarity |
+| VBA Macros | `macros/` | 8 exported modules (Consolidation, DebtSizing, Sensitivity, etc.) |
+| Development Timeline | `docs/Ampyr Financial Model Digitisation timeline.xlsx` | 25 work items, 3 buckets — re-baselined v1.1 (see §17) |
+| Validation oracle probe | [devtools/oracle_probe.py](../devtools/oracle_probe.py) | Empirical proof cached values exist in F1 PLW + Quarterly Output |
 
 ---
 
@@ -685,3 +827,57 @@ Once all blocks are complete:
 | **Sensis** | Sensitivity/Scenario control sheet |
 | **Live_case** | Named range selecting the active scenario (1-24) |
 | **Project_View** | Named range selecting the active asset for PLW calculation |
+
+---
+
+## 17. Deferred Investigation Gates (v1.1)
+
+The 23-Apr re-analysis closed 8 of 15 investigation areas and left 7 open.
+Each remaining item is gated to the latest engineering activity it would otherwise
+block, so the program can proceed without finishing all investigation up-front.
+
+| # | Investigation | Effort | Gates which work item | Status |
+|---|---|---|---|---|
+| 1 | Per-asset parameter inventory (590+ × 120 slots, Project Info horizontal scan) | 1 day | Bucket 2 #15 (Schema), #16 (Ingestion) | Pending — must complete before Phase 1 |
+| 2 | Full 78-asset list by country/tech in F1 | 0.25 day | Bucket 2 #15 (Schema) | Pending — must complete before Phase 1 |
+| 3 | Time Inputs (M) monthly disagg mechanics (603k formulas) | 2-3 days | Bucket 1 #4 (Revenue) | Pending — gate Revenue block |
+| 4 | HoldCo CFs & Valuation (664k formulas, 3,379 rows) | 3-4 days | Bucket 1 #11 (IRR), #12-#13 implicitly | Pending — gate IRR / consolidation |
+| 5 | HoldCo_Facility (92k formulas, facility-level debt) | 1-2 days | Bucket 1 #8 (Senior Debt + DSCR) | Pending — gate Senior Debt block |
+| 6 | HoldCo income (155k formulas, 80% rows hidden) | 1 day | Bucket 1 #11 (IRR) | Pending — gate IRR |
+| 7 | 184 PLW rows that changed F3→F1 (side-by-side formula comparison) | 0.5 day | Translator framework (Bucket 1 #1) | Pending — informs translator design |
+| 8 | 75 PLW edge-case rows (per-row inspection) | 1 day | Translator framework (Bucket 1 #1) | Pending — informs translator design |
+| — | Charts sheet (305k formulas) | — | None — staging only | **Deferred indefinitely** |
+| — | Excel cached-value validation oracle | — | All engine work | **CLOSED** ✅ — confirmed 2026-04-27 |
+| — | External SharePoint workbooks | — | Ingestion | **CLOSED** ✅ — declared out of scope |
+| — | `ProjectActiveFlag` vs `ProjectconsolidateFlag` discrepancy | — | DSCR + Sensitivity blocks | Open — inspect at block-implementation time |
+| — | Colour coding / fill rules | — | None unless GTC export must be pixel-perfect | **Deferred** |
+| — | Print areas / page setup | — | None unless GTC export must be pixel-perfect | **Deferred** |
+
+### Net effort impact
+
+- **Before Phase 1** (~2 days): items 1, 2, plus partial item 3 (Time Inputs (M) annual→monthly disagg only)
+- **Before Bucket 1 #1 Translator** (~1.5 days): items 7, 8 — design the per-column override map
+- **Before Bucket 1 #4 Revenue** (~2 days): finish item 3
+- **Before Bucket 1 #8 Senior Debt** (~1-2 days): item 5
+- **Before Bucket 1 #11 IRR** (~4-5 days): items 4, 6
+
+Total net new investigation: **~10 days (~2 weeks)**. The existing 2.2-week buffer
+absorbs this with margin. **No timeline slip projected.**
+
+### Re-baselined timeline (v1.1)
+
+The 25-item plan in `docs/Ampyr Financial Model Digitisation timeline.xlsx` remains
+structurally valid. Adjustments to apply when next regenerated:
+
+| Item | v1.0 estimate | v1.1 adjustment | Reason |
+|---|---|---|---|
+| #1 Translator framework | 2.0 w | **+0.5 w → 2.5 w** | 75 edge-case rows + per-column override map |
+| #4 Revenue engine | 2.8 w | unchanged | Investigation absorbs into existing buffer |
+| #8 Senior Debt + DSCR | 1.4 w | **+0.2 w → 1.6 w** | TWO convergence criteria + max_iter cap |
+| #12 Scenario engine | 1.0 w | **+0.2 w → 1.2 w** | 15+ levers across 4 sections, mixed types |
+| #14 Validation | 1.6 w | unchanged | Oracle confirmed; plan stands |
+| #16 Ingestion pipeline | 1.4 w | **+0.3 w → 1.7 w** | Hidden rows, #REF! handling, named-range filtering, row-shift alignment |
+| #19 GTC reporting | 1.4 w | **−0.4 w → 1.0 w** | Asset workings collapses to one groupby/pivot, not 1.19M lines |
+| Buffer | 2.2 w | **−0.8 w → 1.4 w** | Absorbs net adjustments |
+
+Net Bucket totals remain ~28.5 weeks. The buffer shrinks but stays positive.

@@ -1,11 +1,17 @@
-# Core
+# Production dependencies — used by the core app under app/
+# DO NOT add pandas, plotly, matplotlib, or other dev-only libs here.
+# Dev tooling (devtools/, scripts/, tests/) goes in requirements-dev.txt.
+
+# Web framework
 fastapi[standard]>=0.115.0
 uvicorn[standard]>=0.32.0
+
+# Database
 sqlalchemy>=2.0.36
 alembic>=1.14.0
 psycopg2-binary>=2.9.10
 
-# Calculation engine
+# Calculation engine — pure NumPy/SciPy, no pandas
 numpy>=2.1.0
 scipy>=1.14.0
 
@@ -13,14 +19,9 @@ scipy>=1.14.0
 openpyxl>=3.1.5
 xlsxwriter>=3.2.0
 
-# Frontend
+# Production UI (Streamlit pages live in app/ui/)
 streamlit>=1.40.0
 
-# Dev tools
-ruff>=0.8.0
-pytest>=8.3.0
-pytest-asyncio>=0.24.0
-httpx>=0.28.0
-
-# Utilities
+# Config
 python-dotenv>=1.0.1
+pydantic-settings>=2.6.0

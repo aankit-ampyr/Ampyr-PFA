@@ -1,0 +1,17 @@
+# Development dependencies — for tests, dev tooling under devtools/, and analysis scripts under scripts/.
+# Install both:  pip install -r requirements.txt -r requirements-dev.txt
+# Production code in app/ MUST NOT depend on anything declared only here.
+
+-r requirements.txt
+
+# Test framework
+pytest>=8.3.0
+pytest-asyncio>=0.24.0
+httpx>=0.28.0
+
+# Linting / formatting
+ruff>=0.8.0
+
+# Dev dashboard (devtools/workflow_explorer.py) and analysis scripts
+pandas>=2.2.0
+plotly>=5.24.0
