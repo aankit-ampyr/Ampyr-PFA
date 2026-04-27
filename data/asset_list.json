@@ -1,0 +1,1100 @@
+{
+  "version_source": "Converted 2026-01-08 Project Parthenon - CIP_ASE_Internal_v18 - original file latest quarter.xlsm",
+  "extracted_at": "2026-04-27T09:08:56.921119+00:00",
+  "extracted_by": "scripts/build_asset_list.py",
+  "slot_count": 120,
+  "status_counts": {
+    "active": 70,
+    "placeholder": 50,
+    "retired": 0,
+    "unknown": 0
+  },
+  "schema_version": 1,
+  "decisions_applied": [
+    "ADR-0001",
+    "ADR-0002",
+    "ADR-0003"
+  ],
+  "slots": [
+    {
+      "slot_index": 1,
+      "name": "Gorgast - Cluster",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 2,
+      "name": "Elsterheide",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 3,
+      "name": "Merenberg",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 4,
+      "name": "Gorgast - Cluster BESS",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 5,
+      "name": "Elsterheide - BESS",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 6,
+      "name": "Merenberg - BESS",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 7,
+      "name": "Glowen_Netzow",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 8,
+      "name": "Golzow",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 9,
+      "name": "Kunrau ",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 10,
+      "name": "Adamshoffnung 2",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 11,
+      "name": "Pinnow",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 12,
+      "name": "Arendsee",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 13,
+      "name": "Alt Tucheband",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 14,
+      "name": "Bad Bibra (Altenroda)",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 15,
+      "name": "Bippen",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 16,
+      "name": "Brackel",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 17,
+      "name": "Eichstedt",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 18,
+      "name": "Huxfeld",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 19,
+      "name": "Luko",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 20,
+      "name": "Neidsch\u00fctz",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 21,
+      "name": "Th\u00fcrkow",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 22,
+      "name": "Dalum Chicken Farm",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 23,
+      "name": "Wulfsen",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 24,
+      "name": "Dalum East",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 25,
+      "name": "Letschin",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 26,
+      "name": "Dalum West",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 27,
+      "name": "Haren",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 28,
+      "name": "Breddin",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 29,
+      "name": "Echt-Susteren",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 30,
+      "name": "Venray",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 31,
+      "name": "Tinte",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 32,
+      "name": "Groensebos",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 33,
+      "name": "NOP",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 34,
+      "name": "Snelle Loop",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 35,
+      "name": "NOP - BESS",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 36,
+      "name": "Snelle Loop - BESS",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 37,
+      "name": "Schietecoven",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 38,
+      "name": "Groensebos II",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 39,
+      "name": "America",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 40,
+      "name": "Schinnen",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 41,
+      "name": "Gasselternijveen",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 42,
+      "name": "Echt BESS",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 43,
+      "name": "Venray BESS",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 44,
+      "name": "Tinte BESS",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 45,
+      "name": "Groensebos BESS",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 46,
+      "name": "Schinnen BESS",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 47,
+      "name": "Schietcoven BESS",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 48,
+      "name": "Dordrecht",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 49,
+      "name": "Mijdrecht",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 50,
+      "name": "Cotes Heath",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 51,
+      "name": "Bridge Farm",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 52,
+      "name": "Wolds Farm",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 53,
+      "name": "Keith",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 54,
+      "name": "Mount Owen",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 55,
+      "name": "Neath Farm (Pembroke)",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 56,
+      "name": "Pennymoor",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 57,
+      "name": "Totleywells",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 58,
+      "name": "Atherstone",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 59,
+      "name": "Burton Top",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 60,
+      "name": "Costock",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 61,
+      "name": "Devizes",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 62,
+      "name": "Flaxlands",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 63,
+      "name": "Holmside",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 64,
+      "name": "North newton",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 65,
+      "name": "Poppleton",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 66,
+      "name": "Sutton",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 67,
+      "name": "Trinlaymire",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 68,
+      "name": "Witney",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 69,
+      "name": "Northwold",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar & BESS",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 70,
+      "name": "Scruton",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 71,
+      "name": "Viking",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 72,
+      "name": "EAL",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 73,
+      "name": "Early_DE",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar & BESS",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 74,
+      "name": "Early_UK",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 75,
+      "name": "Early_NL",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar & BESS",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 76,
+      "name": "Jerriestown",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 77,
+      "name": "Harker 2",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 78,
+      "name": "North Newton Phase 2",
+      "country_short": "UK",
+      "country_full": "UK",
+      "technology": "Solar & BESS",
+      "is_active": true,
+      "slot_status": "active"
+    },
+    {
+      "slot_index": 79,
+      "name": "[Placeholder asset NL]",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 80,
+      "name": "[Placeholder asset NL]",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 81,
+      "name": "[Placeholder asset NL]",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 82,
+      "name": "[Placeholder asset NL]",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 83,
+      "name": "[Placeholder asset NL]",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 84,
+      "name": "[Placeholder asset NL]",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 85,
+      "name": "[Placeholder asset NL]",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 86,
+      "name": "[Placeholder asset NL]",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 87,
+      "name": "[Placeholder asset NL]",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 88,
+      "name": "[Placeholder asset NL]",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 89,
+      "name": "[Placeholder asset NL]",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 90,
+      "name": "[Placeholder asset NL]",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 91,
+      "name": "[Placeholder asset NL]",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 92,
+      "name": "[Placeholder asset NL]",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 93,
+      "name": "[Placeholder asset NL]",
+      "country_short": "NL",
+      "country_full": "The Netherlands",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 94,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 95,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 96,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 97,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 98,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 99,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 100,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 101,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 102,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 103,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 104,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 105,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 106,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 107,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 108,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 109,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 110,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 111,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 112,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 113,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 114,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 115,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 116,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 117,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 118,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 119,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    },
+    {
+      "slot_index": 120,
+      "name": "[Placeholder asset DE]",
+      "country_short": "DE",
+      "country_full": "Germany",
+      "technology": "Solar",
+      "is_active": false,
+      "slot_status": "placeholder"
+    }
+  ]
+}
