@@ -428,9 +428,40 @@ with tab_decisions:
     st.subheader("Decisions & Ambiguities")
     st.caption(
         "Pending questions for SME review. Source: `docs/decisions/*.md` "
-        "(ADR-style markdown). Submitting an answer writes back to the file — "
-        "commit the change to capture the audit trail."
+        "(ADR-style markdown). On submit: tries to write back to the .md file "
+        "(works locally), AND accumulates answers in this session for JSON export "
+        "(works on Streamlit Cloud where the filesystem is ephemeral)."
     )
+
+    # Session-state accumulator: list of dicts, one per answered decision in this session
+    if "answers" not in st.session_state:
+        st.session_state.answers = []
+
+    # Export panel — visible whenever the session has any answers
+    if st.session_state.answers:
+        n = len(st.session_state.answers)
+        export_payload = {
+            "session_exported_at": pd.Timestamp.utcnow().isoformat(),
+            "answers": st.session_state.answers,
+        }
+        col_a, col_b, col_c = st.columns([2, 2, 1])
+        col_a.success(f"📦 {n} answer{'s' if n != 1 else ''} ready to export")
+        col_b.download_button(
+            label="Download answers JSON",
+            data=json.dumps(export_payload, indent=2, default=str),
+            file_name=f"parthenon-decisions-{pd.Timestamp.utcnow().strftime('%Y%m%d-%H%M')}.json",
+            mime="application/json",
+            type="primary",
+            use_container_width=True,
+        )
+        if col_c.button("Clear session", help="Discard accumulated answers in this session"):
+            st.session_state.answers = []
+            st.rerun()
+        st.caption(
+            "Cloud workflow: download this JSON, share with Ankit. Ankit applies it "
+            "locally via `python scripts/apply_decisions.py path/to/json` then commits."
+        )
+        st.divider()
 
     if not DECISIONS_DIR.exists():
         st.warning(f"No `{DECISIONS_DIR.relative_to(ROOT)}/` directory yet.")
@@ -502,15 +533,39 @@ with tab_decisions:
             )
 
             if st.button(f"Submit answer for {adr_id}", key=f"submit_{adr_id}", type="primary"):
+                answer_record = {
+                    "id": adr_id,
+                    "title": fm.get("title", ""),
+                    "decision": choice,
+                    "decided_by": decided_by_override.strip() or DEFAULT_DECIDED_BY,
+                    "decided_on": date.today().isoformat(),
+                    "notes": notes.strip() or None,
+                }
+                # Always: accumulate in session state for JSON export
+                st.session_state.answers = [
+                    a for a in st.session_state.answers if a["id"] != adr_id
+                ] + [answer_record]
+
+                # Best-effort: write back to .md file (works locally, may fail on
+                # Streamlit Cloud where the filesystem is read-only/ephemeral).
                 fm["status"] = "answered"
-                fm["decision"] = choice
-                fm["decided_on"] = date.today().isoformat()
-                fm["decided_by"] = decided_by_override.strip() or DEFAULT_DECIDED_BY
-                if notes.strip():
-                    fm["notes"] = notes.strip()
-                write_adr(path, fm, body)
-                st.success(f"Saved to `{path.relative_to(ROOT)}`. "
-                           f"Commit the file to capture the audit trail.")
+                fm["decision"] = answer_record["decision"]
+                fm["decided_on"] = answer_record["decided_on"]
+                fm["decided_by"] = answer_record["decided_by"]
+                if answer_record["notes"]:
+                    fm["notes"] = answer_record["notes"]
+                try:
+                    write_adr(path, fm, body)
+                    st.success(
+                        f"Saved to `{path.relative_to(ROOT)}` AND added to session "
+                        f"export ({len(st.session_state.answers)} total)."
+                    )
+                except OSError as e:
+                    st.warning(
+                        f"Could not write the .md file ({type(e).__name__}: {e}). "
+                        f"Answer is captured in the session — use the **Download "
+                        f"answers JSON** button above to export it."
+                    )
                 st.cache_data.clear()
                 st.rerun()
 
