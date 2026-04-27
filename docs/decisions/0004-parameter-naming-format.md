@@ -1,23 +1,25 @@
 ---
-id: "0004"
+id: '0004'
 title: How should we record parameter names — raw Excel label or derived snake_case?
-status: pending
-gates: [P1, schema_#15]
+status: answered
+gates:
+- P1
+- 'schema_#15'
 asked: 2026-04-27
-decided_by: null
-decided_on: null
-decision: null
-notes: null
+decided_by: Anchal Gupta
+decided_on: '2026-04-27'
+decision: c
+notes: 'Hybrid: store both display_name (raw Excel label verbatim) and param_id (derived canonical form). Preserves Excel-grep traceability AND code-friendly identifiers. Transformation rule for param_id needs to be documented and applied consistently — to be specified in the schema work for Bucket 2 #15.'
 options:
-  - id: a
-    label: Raw Excel labels as-is
-    consequence: 'Preserves typos and inconsistencies exactly (e.g. "Land acqusition" stays misspelled). Easiest to trace back to Excel. Hard to reference in code (string with spaces, brackets, slashes).'
-  - id: b
-    label: Derived snake_case canonical form
-    consequence: 'Code-friendly (e.g. contracted_volume_input). Diverges from Excel; we lose ability to grep Excel labels directly. Need a transformation rule documented + applied consistently.'
-  - id: c
-    label: Hybrid — store both as display_name + param_id
-    consequence: 'param_id is canonical for code/joins; display_name preserves the Excel label verbatim. Slightly more storage. Best of both for traceability AND code ergonomics.'
+- id: a
+  label: Raw Excel labels as-is
+  consequence: Preserves typos and inconsistencies exactly (e.g. "Land acqusition" stays misspelled). Easiest to trace back to Excel. Hard to reference in code (string with spaces, brackets, slashes).
+- id: b
+  label: Derived snake_case canonical form
+  consequence: Code-friendly (e.g. contracted_volume_input). Diverges from Excel; we lose ability to grep Excel labels directly. Need a transformation rule documented + applied consistently.
+- id: c
+  label: Hybrid — store both as display_name + param_id
+  consequence: param_id is canonical for code/joins; display_name preserves the Excel label verbatim. Slightly more storage. Best of both for traceability AND code ergonomics.
 ---
 
 ## Where in Excel

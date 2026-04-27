@@ -1,23 +1,25 @@
 ---
-id: "0005"
+id: '0005'
 title: What metadata to capture per parameter, beyond name + value?
-status: pending
-gates: [P1, schema_#15]
+status: answered
+gates:
+- P1
+- 'schema_#15'
 asked: 2026-04-27
-decided_by: null
-decided_on: null
-decision: null
-notes: null
+decided_by: Anchal Gupta
+decided_on: '2026-04-27'
+decision: c
+notes: 'Full metadata: section, row, source_cell, sheet, units, scale, section_path, data_type, is_input_vs_derived. Highest-cost choice up front but pre-empts the need for backfill migrations later (asset_parameters is the largest table — getting columns right now is cheap). Enables: Excel cell traceability for SME validation calls, structured quarterly diffs (row moves vs value changes), unit checking, and input-vs-derived discrimination for the differ.'
 options:
-  - id: a
-    label: Minimal — (asset_id, param_id, value)
-    consequence: 'Smallest schema. Fastest ingestion. Cannot trace a value back to its Excel cell when validating. No units capture (so the engine has to encode unit assumptions). Brittle when Excel structure shifts.'
-  - id: b
-    label: Traceable — adds (section, row, source_cell, sheet)
-    consequence: 'Recommended baseline. Lets us answer "where did this value come from?" — critical for SME validation calls and quarterly diff reports. Roughly doubles the row width but each field is small (int row, string source_cell like "G87"). Schema #15 will need these for the differ.'
-  - id: c
-    label: Full — adds (units, scale, section_path, data_type, is_input_vs_derived)
-    consequence: 'Maximally expressive. Captures whether a cell is a raw input (analyst types it) or a derived formula (Excel calculates it from other inputs); units (MWh / GBP / %); scale factor (1 vs 1000 vs 1e6 — many financial models mix these). Heavy ingestion overhead. Useful for auto-generated reports and unit-checking, but most fields are not strictly needed for engine correctness.'
+- id: a
+  label: Minimal — (asset_id, param_id, value)
+  consequence: Smallest schema. Fastest ingestion. Cannot trace a value back to its Excel cell when validating. No units capture (so the engine has to encode unit assumptions). Brittle when Excel structure shifts.
+- id: b
+  label: Traceable — adds (section, row, source_cell, sheet)
+  consequence: 'Recommended baseline. Lets us answer "where did this value come from?" — critical for SME validation calls and quarterly diff reports. Roughly doubles the row width but each field is small (int row, string source_cell like "G87"). Schema #15 will need these for the differ.'
+- id: c
+  label: Full — adds (units, scale, section_path, data_type, is_input_vs_derived)
+  consequence: Maximally expressive. Captures whether a cell is a raw input (analyst types it) or a derived formula (Excel calculates it from other inputs); units (MWh / GBP / %); scale factor (1 vs 1000 vs 1e6 — many financial models mix these). Heavy ingestion overhead. Useful for auto-generated reports and unit-checking, but most fields are not strictly needed for engine correctness.
 ---
 
 ## Where in Excel
