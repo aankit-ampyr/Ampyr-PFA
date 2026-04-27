@@ -82,14 +82,16 @@ scaffolding that supports building it. Keep these separable.
 - `app/` — FastAPI + SQLAlchemy + calc engine + Streamlit production UI
 - `migrations/` — Alembic versioned schema
 - `tests/` — engine + validation tests
-- `requirements.txt` — production dependencies only
+- `requirements.txt` — **runtime dependencies** (everything anything imports at
+  runtime: prod app + dashboards). Streamlit Cloud reads this file directly.
 
 **Dev scaffolding (does NOT ship):**
 - `devtools/` — internal Streamlit dashboards, one-off probes, exploration tools
 - `scripts/` — analysis scripts, timeline generator, formula extractors
 - `.claude/analysis_2026_04/` — raw JSON analysis artefacts
 - `archive/` — superseded files
-- `requirements-dev.txt` — dev/test/dashboard dependencies (extends prod)
+- `requirements-dev.txt` — **dev-only tools** (pytest, ruff, httpx) layered on
+  top of `requirements.txt` via `-r`
 
 **Source data / docs (neither ships nor "dev"):**
 - `data/` — Excel files (input fixtures); `macros/` — extracted VBA reference
@@ -102,11 +104,15 @@ scaffolding that supports building it. Keep these separable.
 2. **`tests/` may import from `app/` only** — not from `devtools/` or `scripts/`.
 3. **`devtools/` and `scripts/` may import from `app/`** (to exercise it) and from
    any dev dependency. They may NOT be imported by `app/`.
-4. **Production `requirements.txt` must never gain `pandas`, `plotly`, or
-   `matplotlib`.** The engine is pure NumPy/SciPy. Dev tooling uses pandas/plotly
-   freely — those go in `requirements-dev.txt`.
+4. **`app/` code must not import `pandas`, `plotly`, or `matplotlib`.** The engine
+   is pure NumPy/SciPy. The boundary is enforced at **import statements** —
+   `requirements.txt` carries pandas/plotly/pyyaml because the dev dashboards
+   need them at runtime, but `app/` code cannot reach for them. Verify before
+   merge with: `grep -rn "^\(import\|from\) \(pandas\|plotly\|matplotlib\)" app/`
+   (must return zero matches).
 5. **When adding a new file, ask "does this ship?"** — if no, it goes in `devtools/`
-   or `scripts/`. If yes, it goes in `app/` and any new dep goes in `requirements.txt`.
+   or `scripts/`. If yes, it goes in `app/`. New runtime deps go in `requirements.txt`;
+   new dev-only tools (test, lint, format) go in `requirements-dev.txt`.
 6. **Streamlit is shared infrastructure.** `app/ui/` (production pages) and
    `devtools/` (internal dashboards) both use Streamlit, but they live in different
    directories so the boundary stays visible.

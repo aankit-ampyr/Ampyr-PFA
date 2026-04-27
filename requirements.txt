@@ -1,6 +1,11 @@
-# Production dependencies — used by the core app under app/
-# DO NOT add pandas, plotly, matplotlib, or other dev-only libs here.
-# Dev tooling (devtools/, scripts/, tests/) goes in requirements-dev.txt.
+# Runtime dependencies — installed everywhere the code runs (local dev,
+# Streamlit Cloud, future production deploys).
+#
+# Boundary is enforced at IMPORTS, not here:
+#   - app/ may import only the "core engine" subset (NumPy/SciPy, no pandas/plotly)
+#   - devtools/ may import anything in this file
+# CLAUDE.md "Boundary rules" §4 has the canonical list. requirements-dev.txt
+# layers test/lint tooling on top of this file.
 
 # Web framework
 fastapi[standard]>=0.115.0
@@ -11,7 +16,7 @@ sqlalchemy>=2.0.36
 alembic>=1.14.0
 psycopg2-binary>=2.9.10
 
-# Calculation engine — pure NumPy/SciPy, no pandas
+# Calculation engine — pure NumPy/SciPy, no pandas (enforced at import in app/)
 numpy>=2.1.0
 scipy>=1.14.0
 
@@ -19,8 +24,13 @@ scipy>=1.14.0
 openpyxl>=3.1.5
 xlsxwriter>=3.2.0
 
-# Production UI (Streamlit pages live in app/ui/)
+# Streamlit (production UI in app/ui/, dev dashboards in devtools/)
 streamlit>=1.40.0
+
+# Dashboards & ADR workflow (used by devtools/, NOT to be imported in app/)
+pandas>=2.2.0
+plotly>=5.24.0
+pyyaml>=6.0.2
 
 # Config
 python-dotenv>=1.0.1
