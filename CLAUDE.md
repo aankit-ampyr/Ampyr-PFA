@@ -284,10 +284,10 @@ settle first** captured as ADRs in [docs/decisions/](docs/decisions/) and answer
 by the SME via the dev dashboard's 🤔 Decisions tab.
 
 **P1 · Per-asset parameter inventory** (horizontal scan of Project Info × 120 slots)
-ADRs to draft (not yet authored):
-- ADR: parameter-name canonical format (snake_case derived vs raw Excel labels)
-- ADR: do we capture units / scale / source cell, or just (name, value)
-- (P1 scope re partial slots is covered by ADR 0003)
+ADRs drafted:
+- [0004 · parameter naming format](docs/decisions/0004-parameter-naming-format.md) (raw Excel label / derived snake_case / hybrid)
+- [0005 · parameter metadata fields](docs/decisions/0005-parameter-metadata-fields.md) (minimal vs traceable vs full)
+- (P1 scope re partial slots is covered by [ADR 0003](docs/decisions/0003-active-vs-all-slots-scope.md))
 
 **P2 · Full 78-asset list by country/tech in F1** — ADRs drafted:
 - [0001 · "active flag" canonical test](docs/decisions/0001-active-flag-canonical-test.md) (string vs boolean)
