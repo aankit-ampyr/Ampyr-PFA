@@ -1,23 +1,24 @@
 ---
-id: "0002"
+id: '0002'
 title: Output shape for the 78-asset list (P2 deliverable)
-status: pending
-gates: [P2]
+status: answered
+gates:
+- P2
 asked: 2026-04-27
-decided_by: null
-decided_on: null
-decision: null
-notes: null
+decided_by: Anchal Gupta
+decided_on: '2026-04-27'
+decision: b
+notes: JSON. Easy to extend with the richer schema implied by ADR 0003 (status enum, slot_index that can extend past 120). Alembic seed will consume the JSON later when schema work begins.
 options:
-  - id: a
-    label: Flat CSV (asset_name, country, technology, slot_index, is_active)
-    consequence: Fastest to produce. Easy to eyeball. No use beyond P2 — schema work has to re-process.
-  - id: b
-    label: JSON (list of objects, same fields)
-    consequence: Slightly slower. Easier to extend with nested fields later (e.g. capacities, COD).
-  - id: c
-    label: Alembic seed migration that creates an `assets` table and inserts rows
-    consequence: Most useful downstream — schema work (Bucket 2 #15) consumes it directly. Highest commitment now (locks initial schema columns).
+- id: a
+  label: Flat CSV (asset_name, country, technology, slot_index, is_active)
+  consequence: Fastest to produce. Easy to eyeball. No use beyond P2 — schema work has to re-process.
+- id: b
+  label: JSON (list of objects, same fields)
+  consequence: Slightly slower. Easier to extend with nested fields later (e.g. capacities, COD).
+- id: c
+  label: Alembic seed migration that creates an `assets` table and inserts rows
+  consequence: 'Most useful downstream — schema work (Bucket 2 #15) consumes it directly. Highest commitment now (locks initial schema columns).'
 ---
 
 ## Where in Excel

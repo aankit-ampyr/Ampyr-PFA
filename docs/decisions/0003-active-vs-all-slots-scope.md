@@ -1,23 +1,25 @@
 ---
-id: "0003"
+id: '0003'
 title: Asset-list scope — all 120 slots, or only the 78 actives?
-status: pending
-gates: [P2, engine_#14]
+status: answered
+gates:
+- P2
+- engine_#14
 asked: 2026-04-27
-decided_by: null
-decided_on: null
-decision: null
-notes: null
+decided_by: Anchal Gupta
+decided_on: '2026-04-27'
+decision: c
+notes: 'All 120 slots with a slot_status enum: active / placeholder / retired. RATIONALE (per Anchal): ASE shares list with active=true/false flags; GTC may toggle these for assessments (verified empirically — F2 differs from F1 in slots 69 Northwold + 76 Jerriestown, both flipped False→True). When ASE adds a new asset, it replaces the next placeholder until all 42 are used; after that, slot_index extends to 121, 122, etc. SCHEMA IMPLICATION: one is_active column, version_id captures the ASE-vs-GTC distinction (no separate GTC flag layer exists in the data — confirmed by deep-dive probe in devtools/probe_gtc_flag_layer.py). DISCREPANCY NOTED: F1 currently has 70 actives (not 78 as DEVELOPMENT_SPEC.md claims); F2 has 72. The ''78'' figure is wrong against latest F1 — needs a separate spec correction.'
 options:
-  - id: a
-    label: All 120 slots, with an `is_active` boolean column
-    consequence: Captures the full template space. Placeholders (42 of them) become real assets in future quarters - keeping their slots avoids re-numbering. Larger working set.
-  - id: b
-    label: Only the 78 active assets, no placeholder slots
-    consequence: Smaller and cleaner. But when ASE activates a placeholder next quarter, we'd need a separate flow to add it. Risks coupling slot_index to row position in Excel.
-  - id: c
-    label: All slots, but a `slot_status` enum (active / placeholder / retired)
-    consequence: Most expressive. Captures the activation lifecycle. Slightly more code.
+- id: a
+  label: All 120 slots, with an `is_active` boolean column
+  consequence: Captures the full template space. Placeholders (42 of them) become real assets in future quarters - keeping their slots avoids re-numbering. Larger working set.
+- id: b
+  label: Only the 78 active assets, no placeholder slots
+  consequence: Smaller and cleaner. But when ASE activates a placeholder next quarter, we'd need a separate flow to add it. Risks coupling slot_index to row position in Excel.
+- id: c
+  label: All slots, but a `slot_status` enum (active / placeholder / retired)
+  consequence: Most expressive. Captures the activation lifecycle. Slightly more code.
 ---
 
 ## Where in Excel

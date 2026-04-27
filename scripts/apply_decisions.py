@@ -81,7 +81,19 @@ def apply_answer(adr_path: Path, answer: dict, force: bool, dry_run: bool) -> tu
     if dry_run:
         return True, f"  WOULD UPDATE: {adr_path.name} → decision='{incoming_decision}', by='{fm['decided_by']}'"
 
-    yaml_text = yaml.safe_dump(fm, sort_keys=False, allow_unicode=True, width=1000)
+    # Custom dumper: force single-quoted style for strings containing '#' so the
+    # round-trip parse doesn't truncate at YAML comment markers (e.g. "Bucket 2 #15").
+    class _ADRDumper(yaml.SafeDumper):
+        pass
+
+    def _str_rep(dumper, data):
+        if "#" in data and "\n" not in data:
+            return dumper.represent_scalar("tag:yaml.org,2002:str", data, style="'")
+        return dumper.represent_scalar("tag:yaml.org,2002:str", data)
+
+    _ADRDumper.add_representer(str, _str_rep)
+    yaml_text = yaml.dump(fm, Dumper=_ADRDumper, sort_keys=False,
+                          allow_unicode=True, width=1000)
     adr_path.write_text(f"---\n{yaml_text}---\n{body}", encoding="utf-8")
     return True, f"  updated: {adr_path.name} → decision='{incoming_decision}'"
 

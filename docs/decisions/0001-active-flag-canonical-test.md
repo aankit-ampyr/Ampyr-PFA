@@ -1,23 +1,25 @@
 ---
-id: "0001"
+id: '0001'
 title: Which "active flag" test is canonical?
-status: pending
-gates: [P2, engine_#14]
+status: answered
+gates:
+- P2
+- engine_#14
 asked: 2026-04-27
-decided_by: null
-decided_on: null
-decision: null
-notes: null
+decided_by: Anchal Gupta
+decided_on: '2026-04-27'
+decision: b
+notes: 'Use boolean compare at both code paths in the Python port (the equivalent of option b uniformly). EMPIRICAL CHECK: F1 row 7 cells are 118 of 120 actual `bool` (probe in devtools/probe_active_flags.py); zero cells contain text ''True''. In VBA, loose typing means ''= "True"'' and ''= True'' both return TRUE for a boolean cell, so the Excel model produces identical output via either path — there''s no actual behavioural deviation. Python should use idiomatic `if flag:` (boolean truthiness). NO `DEVIATES_FROM_EXCEL` annotation needed.'
 options:
-  - id: a
-    label: String compare ('= "True"')
-    consequence: Matches PlatformConsolidation (the production consolidation macro). Current production output behaviour. Risk if cell ever holds a real boolean.
-  - id: b
-    label: Boolean compare ('= True')
-    consequence: Matches Sens_platformconsol (sensitivity macro). Differs from main consolidation if cells hold text.
-  - id: c
-    label: Replicate both, log mismatches
-    consequence: Most defensive. Surfaces the bug rather than hiding it. More code in the Python port.
+- id: a
+  label: String compare ('= "True"')
+  consequence: Matches PlatformConsolidation (the production consolidation macro). Current production output behaviour. Risk if cell ever holds a real boolean.
+- id: b
+  label: Boolean compare ('= True')
+  consequence: Matches Sens_platformconsol (sensitivity macro). Differs from main consolidation if cells hold text.
+- id: c
+  label: Replicate both, log mismatches
+  consequence: Most defensive. Surfaces the bug rather than hiding it. More code in the Python port.
 ---
 
 ## Where in Excel

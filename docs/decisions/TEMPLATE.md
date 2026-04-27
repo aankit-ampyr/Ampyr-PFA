@@ -15,6 +15,8 @@ options:
   - id: b
     label: Option B short description
     consequence: What happens if we pick this
+# YAML gotcha: if a label/consequence contains '#' followed by a space (e.g. "Bucket 2 #15"),
+# wrap the whole value in single quotes — otherwise YAML treats the rest as a comment and truncates.
 ---
 
 ## Where in Excel

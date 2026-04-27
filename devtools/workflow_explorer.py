@@ -221,9 +221,36 @@ def parse_adr(path: Path) -> tuple[dict, str] | None:
     return fm, m.group(2)
 
 
+def _quote_hashes(obj):
+    """Recursively wrap any string containing '# ' in single quotes via PyYAML
+    by forcing the dumper to use a quoted style. Avoids the yaml-truncates-at-#
+    bug for consequence/label/notes fields containing things like 'Bucket 2 #15'."""
+    if isinstance(obj, str):
+        return obj  # PyYAML handles '#' correctly when string is the value, IF dump uses default_style
+    if isinstance(obj, dict):
+        return {k: _quote_hashes(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_quote_hashes(v) for v in obj]
+    return obj
+
+
+def _yaml_str_representer(dumper, data):
+    """Force single-quoted style for any string containing '#' to avoid YAML
+    interpreting it as a comment on round-trip read."""
+    if "#" in data and "\n" not in data:
+        return dumper.represent_scalar("tag:yaml.org,2002:str", data, style="'")
+    return dumper.represent_scalar("tag:yaml.org,2002:str", data)
+
+
 def write_adr(path: Path, fm: dict, body: str) -> None:
-    """Write back an ADR. Preserves field order from `fm`."""
-    yaml_text = yaml.safe_dump(fm, sort_keys=False, allow_unicode=True, width=1000)
+    """Write back an ADR. Preserves field order from `fm`. Forces quoting on
+    strings containing '#' so the round-trip parse doesn't truncate at comments."""
+    # Use a fresh dumper instance to register the custom representer locally
+    class _ADRDumper(yaml.SafeDumper):
+        pass
+    _ADRDumper.add_representer(str, _yaml_str_representer)
+    yaml_text = yaml.dump(fm, Dumper=_ADRDumper, sort_keys=False,
+                          allow_unicode=True, width=1000)
     path.write_text(f"---\n{yaml_text}---\n{body}", encoding="utf-8")
 
 
