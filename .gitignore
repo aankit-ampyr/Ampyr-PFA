@@ -3,6 +3,9 @@
 *.xlsx
 ~$*
 
+# Exception: the regenerable timeline xlsx IS tracked, so quarterly snapshots are diffable in history
+!docs/Ampyr Financial Model Digitisation timeline.xlsx
+
 # Node modules (legacy, now in archive/)
 node_modules/
 
