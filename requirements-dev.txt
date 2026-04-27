@@ -15,3 +15,4 @@ ruff>=0.8.0
 # Dev dashboard (devtools/workflow_explorer.py) and analysis scripts
 pandas>=2.2.0
 plotly>=5.24.0
+pyyaml>=6.0.2

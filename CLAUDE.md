@@ -273,35 +273,29 @@ What's been set up:
 - Project files reorganized from flat `Ref Docs/` into `docs/`, `data/`, `macros/`, `scripts/`, `archive/`
 
 **Phase 1 prerequisites** (2 days, must complete before schema work).
-Per the "Think Before Coding" convention, each item starts with a **Questions to
-settle first** block — surface them with the user before producing data/schema/code.
+Per the "Think Before Coding" convention, each item starts with **Questions to
+settle first** captured as ADRs in [docs/decisions/](docs/decisions/) and answered
+by the SME via the dev dashboard's 🤔 Decisions tab.
 
 **P1 · Per-asset parameter inventory** (horizontal scan of Project Info × 120 slots)
-Questions to settle first:
-- Which slots count as "in scope" — all 120, only 78 actives, or both with a flag?
-- What's the canonical parameter-name format (e.g. snake_case vs raw Excel labels)?
-- Do we capture units / scale / source cell, or just (name, value)?
+ADRs to draft (not yet authored):
+- ADR: parameter-name canonical format (snake_case derived vs raw Excel labels)
+- ADR: do we capture units / scale / source cell, or just (name, value)
+- (P1 scope re partial slots is covered by ADR 0003)
 
-**P2 · Full 78-asset list by country/tech in F1**
-Questions to settle first:
-- Definition of "active": `projectactiveflag = "True"` (string, used by `PlatformConsolidation`)
-  or `= True` (boolean, used by `Sens_platformconsol`)? Both exist in the VBA — which
-  is canonical?
-- Output shape: flat CSV, JSON, or seed Alembic data?
+**P2 · Full 78-asset list by country/tech in F1** — ADRs drafted:
+- [0001 · "active flag" canonical test](docs/decisions/0001-active-flag-canonical-test.md) (string vs boolean)
+- [0002 · asset-list output shape](docs/decisions/0002-asset-list-output-shape.md) (CSV / JSON / Alembic seed)
+- [0003 · scope — all 120 slots vs only the 78 actives](docs/decisions/0003-active-vs-all-slots-scope.md)
 
 **P3 · Time Inputs (M) annual→monthly disagg mechanic** (partial — just the mechanic)
-Questions to settle first:
-- TBD on start (what's the disagg pattern: uniform, weighted, season-specific?
-  Where is the disagg rule defined: inside Time Inputs (M), or in a separate ratio table?).
+ADRs to draft on start (disagg pattern: uniform / weighted / season-specific; rule location).
 
 **P4 · 75 PLW edge-case rows — per-row inspection** (gates Translator framework)
-Questions to settle first:
-- TBD on start (categorisation axis: by row range, by formula type, by which time
-  cols differ? Output: row-by-row catalogue or per-block summary?).
+ADRs to draft on start (categorisation axis; output: row-by-row catalogue vs per-block summary).
 
 **P5 · 184 changed PLW rows — F3 vs F1 formula comparison**
-Questions to settle first:
-- TBD on start (diff format: full side-by-side, only changed cells, or category-tagged?).
+ADRs to draft on start (diff format).
 
 **Then Phase 1 — Database schema & ingestion**
 

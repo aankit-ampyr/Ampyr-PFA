@@ -13,6 +13,7 @@ in docs/.
 """
 from __future__ import annotations
 import json
+import re
 from pathlib import Path
 from datetime import date
 
@@ -20,11 +21,14 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
+import yaml
 from openpyxl import load_workbook
 
 ROOT = Path(__file__).parent.parent
 ANALYSIS = ROOT / ".claude" / "analysis_2026_04"
 TIMELINE_XLSX = ROOT / "docs" / "Ampyr Financial Model Digitisation timeline.xlsx"
+DECISIONS_DIR = ROOT / "docs" / "decisions"
+DEFAULT_DECIDED_BY = "Anchal Gupta"
 
 st.set_page_config(
     page_title="Parthenon · ASE↔GTC Workflow",
@@ -191,10 +195,52 @@ st.divider()
 
 # ---------- Tabs -----------------------------------------------------------
 
-tab_status, tab_inputs, tab_calc, tab_outputs, tab_gtc, tab_quarter, tab_risks = st.tabs(
-    ["📅 Timeline & Status", "📥 Inputs", "⚙️ Calculation workflow", "📤 Outputs (F1)",
+(tab_status, tab_decisions, tab_inputs, tab_calc, tab_outputs,
+ tab_gtc, tab_quarter, tab_risks) = st.tabs(
+    ["📅 Timeline & Status", "🤔 Decisions", "📥 Inputs",
+     "⚙️ Calculation workflow", "📤 Outputs (F1)",
      "📊 GTC additions (F2)", "🔄 Quarterly change profile", "⚠️ Risks & gotchas"]
 )
+
+
+# ---------- ADR helpers (used by Decisions tab) ----------------------------
+
+ADR_PATTERN = re.compile(r"^---\n(.*?)\n---\n(.*)$", re.DOTALL)
+
+
+def parse_adr(path: Path) -> tuple[dict, str] | None:
+    """Parse an ADR file. Returns (frontmatter_dict, body_str) or None if malformed."""
+    text = path.read_text(encoding="utf-8")
+    m = ADR_PATTERN.match(text)
+    if not m:
+        return None
+    try:
+        fm = yaml.safe_load(m.group(1)) or {}
+    except yaml.YAMLError:
+        return None
+    return fm, m.group(2)
+
+
+def write_adr(path: Path, fm: dict, body: str) -> None:
+    """Write back an ADR. Preserves field order from `fm`."""
+    yaml_text = yaml.safe_dump(fm, sort_keys=False, allow_unicode=True, width=1000)
+    path.write_text(f"---\n{yaml_text}---\n{body}", encoding="utf-8")
+
+
+def load_adrs(directory: Path) -> list[tuple[Path, dict, str]]:
+    """Return parsed ADRs sorted by id. Skips README/TEMPLATE and malformed files."""
+    out = []
+    for p in sorted(directory.glob("*.md")):
+        if p.stem.upper() in ("README", "TEMPLATE"):
+            continue
+        parsed = parse_adr(p)
+        if parsed is None:
+            continue
+        fm, body = parsed
+        if not fm.get("id"):
+            continue
+        out.append((p, fm, body))
+    return sorted(out, key=lambda t: t[1].get("id", ""))
 
 # ==========================================================================
 # TIMELINE & STATUS
@@ -373,6 +419,133 @@ with tab_status:
         with st.expander("📝 Notes & assumptions (from timeline xlsx)"):
             for n in timeline["notes"]:
                 st.markdown(f"- {n}")
+
+
+# ==========================================================================
+# DECISIONS  (ADRs in docs/decisions/)
+# ==========================================================================
+with tab_decisions:
+    st.subheader("Decisions & Ambiguities")
+    st.caption(
+        "Pending questions for SME review. Source: `docs/decisions/*.md` "
+        "(ADR-style markdown). Submitting an answer writes back to the file — "
+        "commit the change to capture the audit trail."
+    )
+
+    if not DECISIONS_DIR.exists():
+        st.warning(f"No `{DECISIONS_DIR.relative_to(ROOT)}/` directory yet.")
+        st.stop()
+
+    adrs = load_adrs(DECISIONS_DIR)
+    if not adrs:
+        st.info("No ADRs found. Add files to `docs/decisions/` using TEMPLATE.md.")
+        st.stop()
+
+    pending = [(p, fm, body) for p, fm, body in adrs if fm.get("status") == "pending"]
+    answered = [(p, fm, body) for p, fm, body in adrs if fm.get("status") == "answered"]
+    other = [(p, fm, body) for p, fm, body in adrs
+             if fm.get("status") not in ("pending", "answered")]
+
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Pending", len(pending))
+    c2.metric("Answered", len(answered))
+    c3.metric("Other", len(other), help="superseded / unknown status")
+
+    st.divider()
+
+    # ----- Pending decisions ----------------------------------------------
+    st.markdown(f"### 🟡 Pending ({len(pending)})")
+    if not pending:
+        st.success("All decisions answered. Nice.")
+
+    for path, fm, body in pending:
+        adr_id = fm.get("id", "??")
+        title = fm.get("title", "(no title)")
+        gates = fm.get("gates", []) or []
+        with st.expander(f"**{adr_id}** · {title}  ·  gates: {', '.join(map(str, gates))}",
+                         expanded=(len(pending) == 1)):
+            st.caption(f"Asked {fm.get('asked', '?')} · file: `{path.relative_to(ROOT)}`")
+            st.markdown(body)
+
+            st.markdown("---")
+            st.markdown("##### Answer")
+
+            options = fm.get("options") or []
+            opt_labels = {o["id"]: f"**{o['id'].upper()}** · {o['label']}"
+                          for o in options if "id" in o and "label" in o}
+            opt_labels["other"] = "**Other** (free text — describe in notes)"
+
+            choice = st.radio(
+                "Choose one",
+                options=list(opt_labels.keys()),
+                format_func=lambda k: opt_labels[k],
+                key=f"choice_{adr_id}",
+            )
+
+            if choice in (o["id"] for o in options):
+                cons = next(o.get("consequence", "") for o in options if o["id"] == choice)
+                if cons:
+                    st.caption(f"Consequence: {cons}")
+
+            notes = st.text_area(
+                "Notes (optional — why, what was checked, follow-ups)",
+                key=f"notes_{adr_id}",
+                placeholder="e.g. checked Project Info row 7 col G — shows TRUE (boolean), all-caps, centred. "
+                            "Confirmed with team that current quarter uses dropdown that returns boolean.",
+                height=80,
+            )
+
+            decided_by_override = st.text_input(
+                "Decided by (leave blank for default)",
+                key=f"by_{adr_id}",
+                placeholder=f"default: {DEFAULT_DECIDED_BY}",
+            )
+
+            if st.button(f"Submit answer for {adr_id}", key=f"submit_{adr_id}", type="primary"):
+                fm["status"] = "answered"
+                fm["decision"] = choice
+                fm["decided_on"] = date.today().isoformat()
+                fm["decided_by"] = decided_by_override.strip() or DEFAULT_DECIDED_BY
+                if notes.strip():
+                    fm["notes"] = notes.strip()
+                write_adr(path, fm, body)
+                st.success(f"Saved to `{path.relative_to(ROOT)}`. "
+                           f"Commit the file to capture the audit trail.")
+                st.cache_data.clear()
+                st.rerun()
+
+    # ----- Answered history ------------------------------------------------
+    st.divider()
+    st.markdown(f"### ✅ Answered history ({len(answered)})")
+    if not answered:
+        st.caption("(no decisions answered yet)")
+    else:
+        rows = []
+        for path, fm, body in answered:
+            decision_id = fm.get("decision", "?")
+            options = {o["id"]: o["label"] for o in (fm.get("options") or [])}
+            decision_label = options.get(decision_id, decision_id) if decision_id else "?"
+            rows.append({
+                "ID": fm.get("id", "?"),
+                "Title": fm.get("title", "")[:60],
+                "Decision": f"{decision_id} · {decision_label}"[:70],
+                "By": fm.get("decided_by", "?"),
+                "On": fm.get("decided_on", "?"),
+                "Gates": ", ".join(map(str, fm.get("gates", []) or [])),
+            })
+        st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+
+        with st.expander("Full text of answered decisions"):
+            for path, fm, body in answered:
+                st.markdown(f"**{fm.get('id')}** · {fm.get('title')}")
+                st.caption(
+                    f"{fm.get('decided_by')} on {fm.get('decided_on')} → "
+                    f"`{fm.get('decision')}`"
+                )
+                if fm.get("notes"):
+                    st.markdown(f"> {fm['notes']}")
+                st.divider()
+
 
 # ==========================================================================
 # INPUTS
